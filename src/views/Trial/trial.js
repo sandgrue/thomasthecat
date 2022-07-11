@@ -3718,7 +3718,7 @@ const Trial = () => {
 
             <h1>trial </h1>
 
-            
+
             <h1>trial page will start from here</h1>
             <div id="ezoic-pub-ad-placeholder-105">
                 <ins class="adsbygoogle" style={{ display: "inline-block", width: "680px", height: "220px" }}
@@ -3730,7 +3730,7 @@ const Trial = () => {
             </div>
 
 
-
+            {/* 
             <div>
                 <div id="ezoic-pub-ad-placeholder-106">
                     <ins class="adsbygoogle" style={{ display: "inline-block", width: "580px", height: "400px" }}
@@ -3808,7 +3808,7 @@ const Trial = () => {
                         (adsbygoogle = window.adsbygoogle || []).push({ });
                     </script>
                 </div>
-            </div>
+            </div> */}
 
 
 
