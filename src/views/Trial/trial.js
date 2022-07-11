@@ -3706,6 +3706,8 @@ const Trial = () => {
 
 
 
+    let adsbygoogle = (window.adsbygoogle || []).push({});
+
 
 
 
@@ -3725,8 +3727,7 @@ const Trial = () => {
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
 
                 <script>
-                    {(window.adsbygoogle || []).push({})}
-
+                    {adsbygoogle}
                 </script>
             </div>
 
