@@ -3723,14 +3723,14 @@ const Trial = () => {
 
             <h1>trial page will start from here</h1>
             <div id="ezoic-pub-ad-placeholder-105">
-                <ins class="adsbygoogle" style={{ display: "inline-block", width: "680px", height: "220px" }}
+                <ins class="adsbygoogle" style={{ display: "inline-block" }}
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
-
-                <script>
-                    {(window.adsbygoogle || []).push({})}
-                </script>
             </div>
 
+
+            {/* <script>
+                {(window.adsbygoogle || []).push({})}
+            </script> */}
 
             {/* 
             <div>
