@@ -34,7 +34,7 @@ const Index = (props) => {
         fetchData();
     }, [latlngurl]);
 
-    
+
 
     // navigator.geolocation.getCurrentPosition(function (position) {
     //     console.log("Latitude is :", position.coords.latitude);
@@ -70,6 +70,18 @@ const Index = (props) => {
             {/* Static part */}
             <Searchneeds latlngdata={latlngdata} />
             <ResearchYourApt />
+
+
+
+
+            <div>
+                <div id="ezoic-pub-ad-placeholder-108">
+                    <ins class="adsbygoogle"
+                        style={{ display: "inline-block", width: "728px", height: "90px" }}
+                        data-ad-client="ca-pub-2836217214879103"
+                        data-ad-slot="6662484805"></ins>
+                </div>
+            </div>
 
 
             {/* dynamic part  */}

@@ -3722,25 +3722,19 @@ const Trial = () => {
 
 
             <h1>trial page will start from here</h1>
-            <div id="ezoic-pub-ad-placeholder-105">
+            {/* <div id="ezoic-pub-ad-placeholder-105">
                 <ins class="adsbygoogle" style={{ display: "inline-block" }}
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
-                {/* <script>
-                    {(window.adsbygoogle || []).push({})}
-                </script> */}
+              
             </div>
 
-
-            {/*  */}
 
             <div>
                 <div id="ezoic-pub-ad-placeholder-106">
                     <ins class="adsbygoogle" style={{ display: "inline-block", width: "580px", height: "400px" }}
                         data-ad-client="ca-pub-2836217214879103" data-ad-slot="6293112857"></ins>
 
-                    {/* <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script> */}
+                
                 </div>
             </div>
 
@@ -3750,9 +3744,6 @@ const Trial = () => {
                 <ins class="adsbygoogle" style={{ display: "inline-block", width: "680px", height: "220px" }}
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
 
-                {/* <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({ });
-                </script> */}
             </div>
 
 
@@ -3762,9 +3753,7 @@ const Trial = () => {
                     <ins class="adsbygoogle" style={{ display: "inline-block", width: "580px", height: "400px" }}
                         data-ad-client="ca-pub-2836217214879103" data-ad-slot="6293112857"></ins>
 
-                    {/* <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script> */}
+                 
                 </div>
             </div>
 
@@ -3772,9 +3761,6 @@ const Trial = () => {
                 <ins class="adsbygoogle" style={{ display: "inline-block", width: "680px", height: "220px" }}
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
 
-                {/* <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({ });
-                </script> */}
             </div>
 
 
@@ -3784,9 +3770,7 @@ const Trial = () => {
                     <ins class="adsbygoogle" style={{ display: "inline-block", width: "580px", height: "400px" }}
                         data-ad-client="ca-pub-2836217214879103" data-ad-slot="6293112857"></ins>
 
-                    {/* <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script> */}
+                 
                 </div>
             </div>
 
@@ -3794,9 +3778,7 @@ const Trial = () => {
                 <ins class="adsbygoogle" style={{ display: "inline-block", width: "680px", height: "220px" }}
                     data-ad-client="ca-pub-2836217214879103" data-ad-slot="6665520080"></ins>
 
-                {/* <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({ });
-                </script> */}
+            
             </div>
 
 
@@ -3806,11 +3788,8 @@ const Trial = () => {
                     <ins class="adsbygoogle" style={{ display: "inline-block", width: "580px", height: "400px" }}
                         data-ad-client="ca-pub-2836217214879103" data-ad-slot="6293112857"></ins>
 
-                    {/* <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({ });
-                    </script> */}
                 </div>
-            </div>
+            </div> */}
 
 
 
