@@ -68,11 +68,6 @@ const Index = (props) => {
             <Banner latlngdata={latlngdata} />
 
 
-            {/* Static part */}
-            <Searchneeds latlngdata={latlngdata} />
-            <ResearchYourApt />
-
-
             <section className="secPad">
                 <div className="container">
 
@@ -82,11 +77,25 @@ const Index = (props) => {
             </section>
 
 
-            HIIII
-
+            {/* Static part */}
+            <Searchneeds latlngdata={latlngdata} />
+            <ResearchYourApt />
 
 
             <section className="secPad">
+                <div className="container">
+
+                    <GoogleADS placeholderId='100' width='728px' height='90px' slotno='6662484805' />
+
+                </div>
+            </section>
+
+
+            {/* HIIII */}
+
+
+
+            {/* <section className="secPad">
                 <div className="container">
 
                     <div>
@@ -98,7 +107,7 @@ const Index = (props) => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
 
 
@@ -114,6 +123,14 @@ const Index = (props) => {
             <ProudPartners />
 
             <EmailSubs />
+
+            <section className="secPad">
+                <div className="container">
+
+                    <GoogleADS placeholderId='101' width='970px' height='250px' slotno='1279625173' />
+
+                </div>
+            </section>
 
             <Footer />
 
