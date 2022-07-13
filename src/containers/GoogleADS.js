@@ -1,29 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { GOOGLEADSCLIENTID } from '../constants/constants'
 
-const GoogleADS = ({ width, height, slotno }) => {
+const GoogleADS = ({ placeholderId, width, height, slotno }) => {
 
-    useEffect(() => {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    });
+    // useEffect(() => {
+    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // });
 
 
 
     return (
         <>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2836217214879103"
-                crossorigin="anonymous"></script>
-
-
-
-            <ins class="adsbygoogle"
-                style={{ display: "inline-block", width: `${width}px`, height: `${height}px` }}
-                data-ad-client="ca-pub-2836217214879103"
-                data-ad-slot={slotno}></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({ });
-            </script>
-
-
+            <div id={`ezoic-pub-ad-placeholder-${placeholderId}`}>
+                <ins class="adsbygoogle"
+                    style={{ display: "inline-block", width: width, height: height }}
+                    data-ad-client={GOOGLEADSCLIENTID}
+                    data-ad-slot={slotno}></ins>
+            </div>
         </>
     )
 }

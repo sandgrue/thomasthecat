@@ -3721,6 +3721,22 @@ const Trial = () => {
             <h1>trial </h1>
 
 
+           
+
+            <div>
+                {/* <div style={{ color: 'red' }}> */}
+
+                {/* </div> */}
+                {/* <div id="ezoic-pub-ad-placeholder-108">
+                    <ins class="adsbygoogle"
+                        style={{ display: "inline-block", width: "728px", height: "90px" }}
+                        data-ad-client="ca-pub-2836217214879103"
+                        data-ad-slot="6662484805"></ins>
+                </div> */}
+            </div>
+
+
+
             <h1>trial page will start from here</h1>
             {/* <div id="ezoic-pub-ad-placeholder-105">
                 <ins class="adsbygoogle" style={{ display: "inline-block" }}

@@ -13,6 +13,7 @@ import ImageSliderCarousel from '../PropertyDetail/ImageSliderCarousel'
 import Footer from '../../containers/Footer'
 
 import axios from 'axios'
+import GoogleADS from '../../containers/GoogleADS'
 
 
 const Index = (props) => {
@@ -72,16 +73,23 @@ const Index = (props) => {
             <ResearchYourApt />
 
 
+            <section className="secPad">
+                <div className="container">
+
+                    <GoogleADS placeholderId={'105'} width={'728px'} height={'90px'} slotno={'3956446321'} />
+
+                </div>
+            </section>
 
 
-            <div>
+            {/* <div>
                 <div id="ezoic-pub-ad-placeholder-108">
                     <ins class="adsbygoogle"
                         style={{ display: "inline-block", width: "728px", height: "90px" }}
                         data-ad-client="ca-pub-2836217214879103"
                         data-ad-slot="6662484805"></ins>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* dynamic part  */}

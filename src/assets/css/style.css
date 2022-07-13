@@ -139,9 +139,11 @@ body {
 .fontSize11 {
   font-size: 11px !important;
 }
+
 .fontSize18 {
   font-size: 18px !important;
 }
+
 .fontSize30 {
   font-size: 30px !important;
 }
@@ -10820,17 +10822,20 @@ input[type="radio"]:checked {
 
 
 /*--map addition 12 may --*/
-.housingListt.dataSearchMapList li a p{
+.housingListt.dataSearchMapList li a p {
   font-size: 14px;
   line-height: 24px;
 }
-.housingListt.dataSearchMapList li a h5{
+
+.housingListt.dataSearchMapList li a h5 {
   font-size: 18px;
   display: block;
 }
+
 .noMarginPad.listStyleNone.housingListt.dataSearchMapList li a {
   color: #fff;
 }
+
 .noMarginPad.listStyleNone.housingListt.dataSearchMapList li .listSearchAnchor {
   position: relative;
   display: block;
@@ -10853,24 +10858,30 @@ input[type="radio"]:checked {
   height: auto;
   margin-bottom: 15px;
 }
-.noMarginPad.listStyleNone.housingListt.dataSearchMapList li .listSearchAnchor:hover .rightArrowAction{
+
+.noMarginPad.listStyleNone.housingListt.dataSearchMapList li .listSearchAnchor:hover .rightArrowAction {
   display: block;
 }
-.cluster-marker:hover{
+
+.cluster-marker:hover {
   background-color: #293A90 !important;
 }
-.rightArrowAction{
+
+.rightArrowAction {
   display: none;
 }
-.noMarginPad.listStyleNone.housingListt li .listSearchAnchor:hover{
+
+.noMarginPad.listStyleNone.housingListt li .listSearchAnchor:hover {
   background-color: #293A90;
 }
-.rightArrowAction{
+
+.rightArrowAction {
   position: absolute;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .noMarginPad.listStyleNone.housingListt li a {
   color: rgba(40, 54, 70, 0.8);
 }
@@ -10878,23 +10889,32 @@ input[type="radio"]:checked {
 .mapListingSection {
   padding-top: 36px !important;
 }
+
 .topTitleMapping {
-	padding: 0 0 15px;
-	background-color: #fff;
+  padding: 0 0 15px;
+  background-color: #fff;
 }
+
 /*--19-05-1993--*/
 .mapBlockCheck {
-	position: absolute;
-	top: 10px;
-	background-color: #fff;
-	z-index: 999;
-	left: 8%;
+  position: absolute;
+  top: 10px;
+  background-color: #fff;
+  z-index: 999;
+  left: 8%;
 }
+
 .mapBlockCheck .listingSection.adjustment1.mapListingSection {
-	padding: 8px;
-	top: 0px;
-	padding-top: 8px !important;
+  padding: 8px;
+  top: 0px;
+  padding-top: 8px !important;
 }
-.mapBlockCheck input[type="checkbox"]:checked + span {
-	background: transparent;
+
+.mapBlockCheck input[type="checkbox"]:checked+span {
+  background: transparent;
+}
+
+
+.abcdefgh {
+  background-color: red;
 }
