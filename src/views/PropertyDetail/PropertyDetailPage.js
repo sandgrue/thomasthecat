@@ -38,6 +38,7 @@ import FloorPlanItemMobile from './FloorPlanItemMobile';
 import { Link } from 'react-router-dom';
 import { statelist } from '../../assets/JSONs/jsons';
 import { numberofoccupants } from '../../constants/arraysLists';
+import GoogleADS from '../../containers/GoogleADS';
 
 
 const PropertyDetailPage = ({ post }) => {
@@ -3359,6 +3360,10 @@ const PropertyDetailPage = ({ post }) => {
                                     </div>
                                 </div>
 
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='630' width='300px' height='250px' slotno='3854651772' />
+                                </div>
+
                                 <IncomeLimitsAccordion propdetails={propdetails} specialtitle={specialtitle} subsidized={propdetails.subsidized} />
 
                                 {
@@ -3371,8 +3376,16 @@ const PropertyDetailPage = ({ post }) => {
                                         :
                                         null
                                 }
+
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='631' width='300px' height='250px' slotno='3854651772' />
+                                </div>
+
                                 <AffordabilityCal />
                                 <CityCountyQuickFacts propincome={propincome} />
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
+                                </div>
                             </div>
                         </div>
                         <div className="brdrLine"></div>
