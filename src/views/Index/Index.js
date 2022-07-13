@@ -76,7 +76,7 @@ const Index = (props) => {
             <section className="secPad">
                 <div className="container">
 
-                    <GoogleADS placeholderId={'105'} width={'728px'} height={'90px'} slotno={'3956446321'} />
+                    <GoogleADS placeholderId={'105'} width={'728px'} height={'90px'} slotno={'6662484805'} />
 
                 </div>
             </section>
