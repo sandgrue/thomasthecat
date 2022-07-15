@@ -68,13 +68,13 @@ const Index = (props) => {
             <Banner latlngdata={latlngdata} />
 
 
-            <section className="secPad">
+            {/* <section className="secPad">
                 <div className="container">
 
                     <GoogleADS placeholderId='108' width='728px' height='90px' slotno='3956446321' />
 
                 </div>
-            </section>
+            </section> */}
 
 
             {/* Static part */}
@@ -84,9 +84,7 @@ const Index = (props) => {
 
             <section className="secPad">
                 <div className="container">
-
-                    <GoogleADS placeholderId='100' width='728px' height='90px' slotno='6662484805' />
-
+                    <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
                 </div>
             </section>
 
@@ -126,9 +124,7 @@ const Index = (props) => {
 
             <section className="secPad">
                 <div className="container">
-
-                    <GoogleADS placeholderId='101' width='970px' height='250px' slotno='1279625173' />
-
+                    <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
                 </div>
             </section>
 
