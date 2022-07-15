@@ -5,6 +5,7 @@ import { CityCountyQuickFacts } from '../AgencyDetail/CityCountyQuickFacts'
 import { NearbyAgenciesAccordion } from '../HousingAuthority/NearbyAgenciesAccordion'
 import RentalAssistance from '../../containers/RentalAssistance'
 import Fbpage from '../fbpage/Fbpage'
+import GoogleADS from '../../containers/GoogleADS'
 
 const IncomeLimits = () => {
     document.title = "Income Limits - Rental Housing Deals"
@@ -509,6 +510,10 @@ const IncomeLimits = () => {
 
                                 <AffordabilityCal />
 
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
+                                </div>
+
                                 {/* <div className="accordionBoxInfo losAngeles">
                                 <div id="accordion4">
                                     <div className="card">
@@ -574,6 +579,9 @@ const IncomeLimits = () => {
 
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
+                                </div>
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
                                 </div>
                             </div>
                         </div>

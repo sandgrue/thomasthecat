@@ -23,6 +23,7 @@ import SinglePointMap from '../../containers/SinglePointMap';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link } from 'react-router-dom';
 import { addOrRemoveHA, getAllHA, replaceSpace, toggleHeartHA } from '../../containers/functions';
+import GoogleADS from '../../containers/GoogleADS'
 
 const AgencyDetail = () => {
 
@@ -1217,6 +1218,10 @@ const AgencyDetail = () => {
                                 </div> */}
                                         </div>
 
+                                        <div className="container">
+                                            <GoogleADS placeholderId='618' width='728px' height='90px' slotno='6857091773' />
+                                        </div>
+
                                         <Emailsubs2 />
 
                                         {/* <div className="alertBox mar24 mb-0 alertBoxx2">
@@ -2014,6 +2019,11 @@ const AgencyDetail = () => {
                                                     <div className="brdrLine responsive-15"></div>
                                                 </>
                                         }
+
+
+                                        <div>
+                                            <GoogleADS placeholderId='618' width='970px' height='250px' slotno='6857091773' />
+                                        </div>
 
 
                                         {/* <div className="titleHeading res24Top">
@@ -2824,8 +2834,17 @@ const AgencyDetail = () => {
                                 </div>
                             </div> */}
 
+                                        <div >
+                                            <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3956446321' />
+                                        </div>
+
+
                                         <CityCountyQuickFacts propincome={agenquickfacts} />
 
+
+                                        <div >
+                                            <GoogleADS placeholderId='633' width='300px' height='600px' slotno='1505526895' />
+                                        </div>
 
 
                                     </div>

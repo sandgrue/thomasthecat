@@ -14,7 +14,8 @@ const GoogleADS = ({ placeholderId, width, height, slotno }) => {
             <div id={`ezoic-pub-ad-placeholder-${placeholderId}`}>
                 <ins class="adsbygoogle"
                     style={{
-                        display: "inline-block", width: `${width}`, height: `${height}`
+                        display: "inline-block"
+                        // , width: `100%`, height: `100%`
                     }}
                     data-ad-client={GOOGLEADSCLIENTID}
                     data-ad-slot={slotno}></ins>
