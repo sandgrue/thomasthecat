@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../../containers/Footer'
+import GoogleADS from '../../containers/GoogleADS'
 import RentalAssistance from '../../containers/RentalAssistance'
 import AffordabilityCal from '../AgencyDetail/AffordabilityCal'
 import { CityCountyQuickFacts } from '../AgencyDetail/CityCountyQuickFacts'
@@ -54,13 +55,18 @@ const EnterpriseIncome = () => {
 
                                 <AffordabilityCal />
 
-
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
+                                </div>
 
                                 <CityCountyQuickFacts />
 
 
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
+                                </div>
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
                                 </div>
                             </div>
                         </div>

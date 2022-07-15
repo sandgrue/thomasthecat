@@ -16,6 +16,7 @@ import Loader from '../../containers/Loader';
 
 import RentalAssistance from '../../containers/RentalAssistance'
 import Fbpage from '../fbpage/Fbpage.js';
+import GoogleADS from '../../containers/GoogleADS';
 
 const HousingAuthPage = () => {
     document.title = "Housing Authority - Rental Housing Deals"
@@ -422,7 +423,9 @@ const HousingAuthPage = () => {
                                 </div>
 
 
-
+                                <div >
+                                    <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
+                                </div>
 
                                 <Emailsubs2 />
 
@@ -443,6 +446,9 @@ const HousingAuthPage = () => {
                                         <NearbyAgenciesAccordion data={nearbyagencydata} />
                                 }
 
+                                <div>
+                                    <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
+                                </div>
 
 
                                 <AffordabilityCal />
@@ -450,7 +456,15 @@ const HousingAuthPage = () => {
 
 
 
+
                                 <CityCountyQuickFacts propincome={countydata} />
+
+
+                                <div>
+                                    <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
+                                </div>
+
+
                                 <div className="margin24">
                                     <Fbpage />
                                     {/* <img className="w-100" src={require('../../assets/img/image147.png').default} /> */}

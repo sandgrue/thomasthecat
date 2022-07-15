@@ -8,6 +8,7 @@ import { CityCountyQuickFacts } from '../AgencyDetail/CityCountyQuickFacts'
 import AffordableHousingByRegions from '../Index/AffordableHousingByRegions';
 import Footer from '../../containers/Footer';
 import Fbpage from '../fbpage/Fbpage';
+import GoogleADS from '../../containers/GoogleADS';
 
 const BasicInfoPage = () => {
     { document.title = "Basic Info Page - Rental Housing Deals" }
@@ -1044,7 +1045,7 @@ const BasicInfoPage = () => {
                                                             <div className="d-flex align-items-center inputField posRel">
                                                                 <div className="input-group">
                                                                     <input type="text" className="form-control"
-                                                                         placeholder="Email Address"
+                                                                        placeholder="Email Address"
                                                                         aria-label="Username" aria-describedby="basic-addon1" />
                                                                 </div>
                                                                 <a className="getAlerted brdrRadius4">Get Alerted</a>
@@ -1301,7 +1302,9 @@ const BasicInfoPage = () => {
                             */}
 
                                 <AffordabilityCal />
-
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
+                                </div>
 
 
                                 {/* <div className="accordionBoxInfo losAngeles">
@@ -1372,6 +1375,10 @@ const BasicInfoPage = () => {
 
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
+                                </div>
+
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
                                 </div>
 
                             </div>

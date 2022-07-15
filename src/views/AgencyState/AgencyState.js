@@ -10,6 +10,7 @@ import L from 'leaflet'
 import Maptile1 from './Maptile1'
 import Loader from '../../containers/Loader'
 import Footer from '../../containers/Footer.js'
+import GoogleADS from '../../containers/GoogleADS'
 const AgencyState = () => {
 
     document.title = `Anaheim Housing Authority - Rental Housing Deals`;
@@ -209,15 +210,35 @@ const AgencyState = () => {
                                                             <h1>{searchresultdata}</h1>
                                                             :
                                                             searchresultdata.map(
-                                                                (data) => (
-                                                                    <li className="listState">
-                                                                        <AgencyStateListItem data={data} />
+                                                                (data, index) => (
+                                                                    <>
+                                                                        {
+                                                                            index == 4 ?
+                                                                                <li className="listState">
+                                                                                    <GoogleADS placeholderId='632' width='696px' height='200px' slotno='2539422872' />
+                                                                                </li>
+                                                                                :
+                                                                                null
+                                                                        }
+                                                                        {
+                                                                            index == 9 ?
+                                                                                <li className="listState">
+                                                                                    <GoogleADS placeholderId='633' width='696px' height='200px' slotno='6665520080' />
 
-                                                                    </li>
-                                                                    //     <li className="listingBlock2 responsive-15">
+                                                                                </li>
+                                                                                :
+                                                                                null
+                                                                        }
+
+                                                                        < li className="listState" >
+                                                                            <AgencyStateListItem data={data} />
+
+                                                                        </li>
+                                                                        {/* //     <li className="listingBlock2 responsive-15">
                                                                     //     <AgencyStateListItem data={data} />
 
-                                                                    // </li>
+                                                                    // </li> */}
+                                                                    </>
                                                                 )
                                                             )
                                                 }
@@ -419,8 +440,15 @@ const AgencyState = () => {
 
 
                                 <div className="itemWebsite">
-                                    <img className="" src={require('../../assets/img/advertisement1.png').default} />
+                                    <div>
+                                        <GoogleADS placeholderId='618' width='728px' height='90px' slotno='6857091773' />
+                                    </div>
+                                    {/* <img className="" src={require('../../assets/img/advertisement1.png').default} /> */}
                                 </div>
+
+                                {/* <div>
+                                    <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
+                                </div> */}
 
                                 <div className="row mapSectionArea widthBlock100">
                                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mapRight0 widthBlock70">

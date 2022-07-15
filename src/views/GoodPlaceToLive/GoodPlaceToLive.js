@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../../containers/Footer'
+import GoogleADS from '../../containers/GoogleADS'
 import RentalAssistance from '../../containers/RentalAssistance'
 import AffordabilityCal from '../AgencyDetail/AffordabilityCal'
 import { CityCountyQuickFacts } from '../AgencyDetail/CityCountyQuickFacts'
@@ -37,7 +38,7 @@ const GoodPlaceToLive = () => {
                                 </p>
 
                                 <p className="para">
-                                    <a href="https://www.rentalhousingdeals.com/a%20good%20place%20to%20live%20brochure.pdf"  target="_blank">Download "A Good Place to Live" Brochure &gt;&gt;</a>
+                                    <a href="https://www.rentalhousingdeals.com/a%20good%20place%20to%20live%20brochure.pdf" target="_blank">Download "A Good Place to Live" Brochure &gt;&gt;</a>
                                 </p>
 
                                 <RentalAssistance />
@@ -55,6 +56,9 @@ const GoodPlaceToLive = () => {
 
 
                                 <AffordabilityCal />
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
+                                </div>
 
 
 
@@ -63,6 +67,9 @@ const GoodPlaceToLive = () => {
 
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
+                                </div>
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
                                 </div>
                             </div>
                         </div>

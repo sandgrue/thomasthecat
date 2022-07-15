@@ -9,6 +9,7 @@ import EmailSubs from '../../containers/EmailSubs'
 import AffordableHousingByRegions from '../Index/AffordableHousingByRegions'
 import Footer from '../../containers/Footer'
 import axios from 'axios';
+import GoogleADS from '../../containers/GoogleADS'
 
 const Section8housing = () => {
 
@@ -56,6 +57,11 @@ const Section8housing = () => {
 
             <Searchboxsection8 latlngdata={latlngdata} />
             <ResearchYourApt />
+            <section className="secPad">
+                <div className="container">
+                    <GoogleADS placeholderId='619' width='728px' height='90px' slotno='6857091773' />
+                </div>
+            </section>
             <PropertiesNearby propertynearby={nearbypropdata} titletext={"Low Income Properties Near You"} />
             <PopularCities titletext={'Find Low Income Affordable Properties in Popular Cities'} />
             <FeaturedRentalsInCity latlngdata={latlngdata} />
@@ -63,6 +69,12 @@ const Section8housing = () => {
             <AffordableHousingByRegions page={3} />
             <ProudPartners />
             <EmailSubs />
+
+            <section className="secPad">
+                <div className="container">
+                    <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
+                </div>
+            </section>
             <Footer />
 
         </>
