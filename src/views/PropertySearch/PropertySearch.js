@@ -1181,7 +1181,7 @@ const PropertySearch = () => {
                                                                             (
                                                                                 searchresultdata.slice(head, tail).map((post, index) => (
                                                                                     <>
-                                                                                        {index == 4 ?
+                                                                                        {/* {index == 4 ?
                                                                                             <li className="listingBlock2 responsive-15">
                                                                                                 <GoogleADS placeholderId='625' width='680px' height='220px' slotno='2539422872' />
 
@@ -1197,7 +1197,7 @@ const PropertySearch = () => {
                                                                                                 </li>
                                                                                                 :
                                                                                                 null
-                                                                                        }
+                                                                                        } */}
                                                                                         <li className="listingBlock2 responsive-15"
                                                                                             onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
                                                                                             onMouseLeave={() => clearLatlng()}
@@ -1359,10 +1359,10 @@ const PropertySearch = () => {
                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">
                             <div className="map-fixed">
                                 <div className="itemWebsite">
-                                    <div style={{ width: '766px', height: '94px' }}>
+                                    {/* <div style={{ width: '766px', height: '94px' }}>
                                         <GoogleADS placeholderId='621' width='766px' height='94px' slotno='7791749557' />
 
-                                    </div>
+                                    </div> */}
                                     {/* <img className="h-94" src={require('../../assets/img/advertisement1.png').default} /> */}
                                 </div>
                                 <div className="row mapSectionArea widthBlock100">
