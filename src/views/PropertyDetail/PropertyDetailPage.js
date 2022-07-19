@@ -2888,9 +2888,9 @@ const PropertyDetailPage = ({ post }) => {
                                 <div className="brdrLine"></div>
 
 
-                                <div>
+                                {/* <div>
                                     <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
-                                </div>
+                                </div> */}
 
 
                                 <div className="SectionBlock responsive15 neighborhoodSec">
@@ -3364,9 +3364,9 @@ const PropertyDetailPage = ({ post }) => {
                                     </div>
                                 </div>
 
-                                <div style={{ "margin-top": '24px' }}>
+                                {/* <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='630' width='300px' height='250px' slotno='3854651772' />
-                                </div>
+                                </div> */}
 
                                 <IncomeLimitsAccordion propdetails={propdetails} specialtitle={specialtitle} subsidized={propdetails.subsidized} />
 
@@ -3381,15 +3381,15 @@ const PropertyDetailPage = ({ post }) => {
                                         null
                                 }
 
-                                <div style={{ "margin-top": '24px' }}>
+                                {/* <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='631' width='300px' height='250px' slotno='3854651772' />
-                                </div>
+                                </div> */}
 
                                 <AffordabilityCal />
                                 <CityCountyQuickFacts propincome={propincome} />
-                                <div style={{ "margin-top": '24px' }}>
+                                {/* <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="brdrLine"></div>
@@ -3408,9 +3408,9 @@ const PropertyDetailPage = ({ post }) => {
                             </section>
                         </div>
 
-                        <div>
+                        {/* <div>
                             <GoogleADS placeholderId='621' width='970px' height='250px' slotno='7791749557' />
-                        </div>
+                        </div> */}
 
 
                         <div className="col-lg-8 col-md-12 col-sm-12 col-xs-12">

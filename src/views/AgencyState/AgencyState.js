@@ -212,7 +212,7 @@ const AgencyState = () => {
                                                             searchresultdata.map(
                                                                 (data, index) => (
                                                                     <>
-                                                                        {
+                                                                        {/* {
                                                                             index == 4 ?
                                                                                 <li className="listState">
                                                                                     <GoogleADS placeholderId='632' width='696px' height='200px' slotno='2539422872' />
@@ -228,7 +228,7 @@ const AgencyState = () => {
                                                                                 </li>
                                                                                 :
                                                                                 null
-                                                                        }
+                                                                        } */}
 
                                                                         < li className="listState" >
                                                                             <AgencyStateListItem data={data} />
@@ -440,10 +440,10 @@ const AgencyState = () => {
 
 
                                 <div className="itemWebsite">
-                                    <div>
+                                    {/* <div>
                                         <GoogleADS placeholderId='618' width='728px' height='90px' slotno='6857091773' />
-                                    </div>
-                                    {/* <img className="" src={require('../../assets/img/advertisement1.png').default} /> */}
+                                    </div> */}
+                                    <img className="" src={require('../../assets/img/advertisement1.png').default} /> 
                                 </div>
 
                                 {/* <div>
