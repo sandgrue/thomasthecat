@@ -1218,9 +1218,9 @@ const AgencyDetail = () => {
                                 </div> */}
                                         </div>
 
-                                        <div className="container">
+                                        {/* <div className="container">
                                             <GoogleADS placeholderId='618' width='728px' height='90px' slotno='6857091773' />
-                                        </div>
+                                        </div> */}
 
                                         <Emailsubs2 />
 
@@ -2021,9 +2021,9 @@ const AgencyDetail = () => {
                                         }
 
 
-                                        <div>
+                                        {/* <div>
                                             <GoogleADS placeholderId='618' width='970px' height='250px' slotno='6857091773' />
-                                        </div>
+                                        </div> */}
 
 
                                         {/* <div className="titleHeading res24Top">
@@ -2834,17 +2834,17 @@ const AgencyDetail = () => {
                                 </div>
                             </div> */}
 
-                                        <div >
+                                        {/* <div >
                                             <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3956446321' />
-                                        </div>
+                                        </div> */}
 
 
                                         <CityCountyQuickFacts propincome={agenquickfacts} />
 
 
-                                        <div >
+                                        {/* <div >
                                             <GoogleADS placeholderId='633' width='300px' height='600px' slotno='1505526895' />
-                                        </div>
+                                        </div> */}
 
 
                                     </div>

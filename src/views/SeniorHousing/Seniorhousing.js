@@ -59,11 +59,11 @@ const Seniorhousing = () => {
 
             <ResearchYourApt />
 
-            <section className="secPad">
+            {/* <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='619' width='728px' height='90px' slotno='6857091773' />
                 </div>
-            </section>
+            </section> */}
 
             <PropertiesNearby propertynearby={nearbypropdata} titletext={"Economic Properties For Seniors Near You"} />
             <PopularCities titletext={"Find Low Income Affordable Properties in Popular Cities"} />
@@ -76,11 +76,11 @@ const Seniorhousing = () => {
             <EmailSubs />
 
 
-            <section className="secPad">
+            {/* <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
                 </div>
-            </section>
+            </section> */}
 
             <Footer />
 

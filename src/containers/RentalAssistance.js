@@ -52,9 +52,9 @@ const RentalAssistance = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
-            </div>
+            </div> */}
             <div className="housingAuthority brdrRadius4 itemWebsite">
                 <h2 className="fontSize18 colorBlue">Find Housing Authorities in Every State in the U.S.</h2>
                 <div className="row">

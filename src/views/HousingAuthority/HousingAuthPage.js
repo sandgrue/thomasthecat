@@ -423,9 +423,9 @@ const HousingAuthPage = () => {
                                 </div>
 
 
-                                <div >
+                                {/* <div >
                                     <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
-                                </div>
+                                </div> */}
 
                                 <Emailsubs2 />
 
@@ -446,9 +446,9 @@ const HousingAuthPage = () => {
                                         <NearbyAgenciesAccordion data={nearbyagencydata} />
                                 }
 
-                                <div>
+                                {/* <div>
                                     <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
-                                </div>
+                                </div> */}
 
 
                                 <AffordabilityCal />
@@ -460,9 +460,9 @@ const HousingAuthPage = () => {
                                 <CityCountyQuickFacts propincome={countydata} />
 
 
-                                <div>
+                                {/* <div>
                                     <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
-                                </div>
+                                </div> */}
 
 
                                 <div className="margin24">

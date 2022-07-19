@@ -110,11 +110,11 @@ ezstandalone.display();
             <ResearchYourApt />
 
 
-            <section className="secPad">
+            {/* <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
                 </div>
-            </section>
+            </section> */}
 
 
             {/* HIIII */}
@@ -150,11 +150,11 @@ ezstandalone.display();
 
             <EmailSubs />
 
-            <section className="secPad">
+            {/* <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
                 </div>
-            </section>
+            </section> */}
 
             <Footer />
 

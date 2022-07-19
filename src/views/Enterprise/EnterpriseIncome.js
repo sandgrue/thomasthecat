@@ -55,9 +55,9 @@ const EnterpriseIncome = () => {
 
                                 <AffordabilityCal />
 
-                                <div style={{ "margin-top": '24px' }}>
+                                {/* <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div>
+                                </div> */}
 
                                 <CityCountyQuickFacts />
 
@@ -65,9 +65,9 @@ const EnterpriseIncome = () => {
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
                                 </div>
-                                <div style={{ "margin-top": '24px' }}>
+                                {/* <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
