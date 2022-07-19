@@ -14,10 +14,21 @@ import Footer from '../../containers/Footer'
 
 import axios from 'axios'
 import GoogleADS from '../../containers/GoogleADS'
+import { Helmet } from 'react-helmet'
 
 
 const Index = (props) => {
-    document.title = "Rental Housing Deals"
+
+    const abcd = `  var ezstandalone = ezstandalone || { };
+ezstandalone.cmd = ezstandalone.cmd || [];
+ezstandalone.cmd.push(function () {
+ezstandalone.define(618, 632, 633, 142, 145);
+ezstandalone.enable();
+ezstandalone.display();
+});
+`
+
+    document.title = "Rental Housing Deals";
 
     const [latlngdata, setlatlngdata] = useState();
 
@@ -62,9 +73,26 @@ const Index = (props) => {
         fetchData();
     }, [nearbypropurl]);
 
+
+
     // console.log(latlngdata);
     return (
         <>
+
+
+
+            <Helmet>
+
+
+                <title>Mayank</title>
+                <script type="text/javascript">
+                    {abcd}
+
+
+                </script>
+
+            </Helmet>
+
             <Banner latlngdata={latlngdata} />
 
 
