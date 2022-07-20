@@ -1358,15 +1358,15 @@ const PropertySearch = () => {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">
                             <div className="map-fixed">
-                                <div className="itemWebsite">
+                                <div className="itemWebsite whiteBg h-94">
                                     {/* <div style={{ width: '766px', height: '94px' }}>
                                         <GoogleADS placeholderId='621' width='766px' height='94px' slotno='7791749557' />
                                     </div> */}
-                                    <img className="h-94" src={require('../../assets/img/advertisement1.png').default} />
+                                    {/* <img className="h-94" src={require('../../assets/img/advertisement1.png').default} /> */}
                                 </div>
-                                <div className="row mapSectionArea widthBlock100">
-                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mapRight0 widthBlock70">
-                                        <div className="posRel">
+                                <div className="row mapSectionArea widthBlock100 ">
+                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mapRight0 widthBlock70 whiteBg">
+                                        <div className="posRel whiteBg">
                                             {
                                                 // (searchresultdata !== null && searchresultdata.length !== 0 && searchresultdata !== undefined) && mapchange == false ?
                                                 //     <MultiplePointMap className="map"
