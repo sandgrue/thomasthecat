@@ -1365,8 +1365,8 @@ const PropertySearch = () => {
                                     {/* <img className="h-94" src={require('../../assets/img/advertisement1.png').default} /> */}
                                 </div>
                                 <div className="row mapSectionArea widthBlock100 ">
-                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mapRight0 widthBlock70 whiteBg">
-                                        <div className="posRel whiteBg">
+                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mapRight0 widthBlock70 ">
+                                        <div className="posRel ">
                                             {
                                                 // (searchresultdata !== null && searchresultdata.length !== 0 && searchresultdata !== undefined) && mapchange == false ?
                                                 //     <MultiplePointMap className="map"
