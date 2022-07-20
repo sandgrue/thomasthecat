@@ -81,7 +81,7 @@ ezstandalone.display();
 
 
 
-            <Helmet>
+            {/* <Helmet>
 
 
                 <title>Mayank</title>
@@ -91,7 +91,7 @@ ezstandalone.display();
 
                 </script>
 
-            </Helmet>
+            </Helmet> */}
 
             <Banner latlngdata={latlngdata} />
 
