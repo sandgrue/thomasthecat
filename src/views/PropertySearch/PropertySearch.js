@@ -29,6 +29,7 @@ import { amenitieslist, apt_type, numberofbeds, numberofbaths } from '../../cons
 import CityWiseList from './CityWiseList';
 import { ERROR, FIRSTAPI, SECONDAPI, THIRDAPI } from '../../constants/constants';
 import GoogleADS from '../../containers/GoogleADS';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -1051,6 +1052,13 @@ const PropertySearch = () => {
 
 
 
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618, 619,621);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
 
 
 
@@ -1059,6 +1067,14 @@ const PropertySearch = () => {
 
     return (
         <>
+
+
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
+
             <section className="listingPage secPad24 propertySearchPage premium">
                 <div className="container2">
                     <div className="row">
@@ -1181,9 +1197,9 @@ const PropertySearch = () => {
                                                                             (
                                                                                 searchresultdata.slice(head, tail).map((post, index) => (
                                                                                     <>
-                                                                                        {/* {index == 4 ?
+                                                                                        {index == 4 ?
                                                                                             <li className="listingBlock2 responsive-15">
-                                                                                                <GoogleADS placeholderId='625' width='680px' height='220px' slotno='2539422872' />
+                                                                                                <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' />
 
                                                                                             </li>
                                                                                             :
@@ -1192,12 +1208,12 @@ const PropertySearch = () => {
                                                                                         {
                                                                                             index == 9 ?
                                                                                                 <li className="listingBlock2 responsive-15">
-                                                                                                    <GoogleADS placeholderId='628' width='680px' height='220px' slotno='6665520080' />
+                                                                                                    <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' />
 
                                                                                                 </li>
                                                                                                 :
                                                                                                 null
-                                                                                        } */}
+                                                                                        }
                                                                                         <li className="listingBlock2 responsive-15"
                                                                                             onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
                                                                                             onMouseLeave={() => clearLatlng()}
@@ -1359,9 +1375,9 @@ const PropertySearch = () => {
                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">
                             <div className="map-fixed">
                                 <div className="itemWebsite whiteBg h-94">
-                                    {/* <div style={{ width: '766px', height: '94px' }}>
+                                    <div style={{ width: '766px', height: '94px' }}>
                                         <GoogleADS placeholderId='621' width='766px' height='94px' slotno='7791749557' />
-                                    </div> */}
+                                    </div>
                                     {/* <img className="h-94" src={require('../../assets/img/advertisement1.png').default} /> */}
                                 </div>
                                 <div className="row mapSectionArea widthBlock100 ">

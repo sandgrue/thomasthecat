@@ -10,6 +10,7 @@ import AffordableHousingByRegions from '../Index/AffordableHousingByRegions'
 import Footer from '../../containers/Footer'
 import axios from 'axios';
 import GoogleADS from '../../containers/GoogleADS'
+import { Helmet } from 'react-helmet'
 
 const Seniorhousing = () => {
     { document.title = "Senior Housing - Rental Housing Deals" }
@@ -52,18 +53,32 @@ const Seniorhousing = () => {
         fetchData();
     }, [nearbypropurl]);
 
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(619, 145);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
+
     return (
         <>
+
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
 
             <Searchbox latlngdata={latlngdata} />
 
             <ResearchYourApt />
 
-            {/* <section className="secPad">
+            <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='619' width='728px' height='90px' slotno='6857091773' />
                 </div>
-            </section> */}
+            </section>
 
             <PropertiesNearby propertynearby={nearbypropdata} titletext={"Economic Properties For Seniors Near You"} />
             <PopularCities titletext={"Find Low Income Affordable Properties in Popular Cities"} />
@@ -76,11 +91,11 @@ const Seniorhousing = () => {
             <EmailSubs />
 
 
-            {/* <section className="secPad">
+            <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
                 </div>
-            </section> */}
+            </section>
 
             <Footer />
 
