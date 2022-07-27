@@ -17,7 +17,7 @@ const IncomeLimits = () => {
     ezstandalone.define(618,632, 149);
     ezstandalone.enable();
     ezstandalone.display();
-    });`
+    });`;
     return (
         <>
 
@@ -591,9 +591,9 @@ const IncomeLimits = () => {
                                 <CityCountyQuickFacts />
 
 
-                                <div className="margin24">
+                                {/* <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
-                                </div>
+                                </div> */}
                                 <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='149' width='300px' height='600px' slotno='2347851182' />
                                 </div>
