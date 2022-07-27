@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import Footer from '../../containers/Footer'
 import GoogleADS from '../../containers/GoogleADS'
 import RentalAssistance from '../../containers/RentalAssistance'
@@ -8,10 +9,28 @@ import Fbpage from '../fbpage/Fbpage'
 import { NearbyAgenciesAccordion } from '../HousingAuthority/NearbyAgenciesAccordion'
 
 const LowIncomeHousingChoice = () => {
-    document.title = "Low Income Housing Choice - Rental Housing Deals"
+    document.title = "Low Income Housing Choice - Rental Housing Deals";
+
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618,632, 149);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`;
 
     return (
         <>
+
+
+
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
+
+
             <section className="secPad24">
                 <div className="container">
                     <div className="row">
@@ -49,9 +68,9 @@ const LowIncomeHousingChoice = () => {
 
 
                                 <AffordabilityCal />
-                                {/* <div style={{ "margin-top": '24px' }}>
+                                <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div> */}
+                                </div>
 
 
 
@@ -61,9 +80,9 @@ const LowIncomeHousingChoice = () => {
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
                                 </div>
-                                {/* <div style={{ "margin-top": '24px' }}>
-                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div> */}
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='149' width='300px' height='600px' slotno='2347851182' />
+                                </div>
                             </div>
                         </div>
                     </div>
