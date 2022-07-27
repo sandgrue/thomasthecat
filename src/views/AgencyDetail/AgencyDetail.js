@@ -24,6 +24,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { Link } from 'react-router-dom';
 import { addOrRemoveHA, getAllHA, replaceSpace, toggleHeartHA } from '../../containers/functions';
 import GoogleADS from '../../containers/GoogleADS'
+import { Helmet } from 'react-helmet'
 
 const AgencyDetail = () => {
 
@@ -553,7 +554,13 @@ const AgencyDetail = () => {
 
 
 
-
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618, 145,632,149);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
 
 
 
@@ -561,6 +568,11 @@ const AgencyDetail = () => {
 
     return (
         <>
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
             {
                 agencydata == [] || agencydata == undefined || agencydata == null || agencydata == ''
                     ?
@@ -1218,9 +1230,9 @@ const AgencyDetail = () => {
                                 </div> */}
                                         </div>
 
-                                        {/* <div className="container">
-                                            <GoogleADS placeholderId='618' width='728px' height='90px' slotno='6857091773' />
-                                        </div> */}
+                                        <div className="container">
+                                            <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
+                                        </div>
 
                                         <Emailsubs2 />
 
@@ -2021,9 +2033,9 @@ const AgencyDetail = () => {
                                         }
 
 
-                                        {/* <div>
-                                            <GoogleADS placeholderId='618' width='970px' height='250px' slotno='6857091773' />
-                                        </div> */}
+                                        <div>
+                                            <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
+                                        </div>
 
 
                                         {/* <div className="titleHeading res24Top">
@@ -2834,17 +2846,17 @@ const AgencyDetail = () => {
                                 </div>
                             </div> */}
 
-                                        {/* <div >
-                                            <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3956446321' />
-                                        </div> */}
+                                        <div >
+                                            <GoogleADS placeholderId='632' width='300px' height='250px' slotno='4974014528' />
+                                        </div>
 
 
                                         <CityCountyQuickFacts propincome={agenquickfacts} />
 
 
-                                        {/* <div >
-                                            <GoogleADS placeholderId='633' width='300px' height='600px' slotno='1505526895' />
-                                        </div> */}
+                                        <div >
+                                            <GoogleADS placeholderId='149' width='300px' height='600px' slotno='2347851182' />
+                                        </div>
 
 
                                     </div>

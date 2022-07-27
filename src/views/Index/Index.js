@@ -18,16 +18,6 @@ import { Helmet } from 'react-helmet'
 
 
 const Index = (props) => {
-
-    const abcd = `  var ezstandalone = ezstandalone || { };
-ezstandalone.cmd = ezstandalone.cmd || [];
-ezstandalone.cmd.push(function () {
-ezstandalone.define(618, 632, 633, 142, 145);
-ezstandalone.enable();
-ezstandalone.display();
-});
-`
-
     document.title = "Rental Housing Deals";
 
     const [latlngdata, setlatlngdata] = useState();
@@ -73,7 +63,13 @@ ezstandalone.display();
         fetchData();
     }, [nearbypropurl]);
 
-
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618, 145);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
 
     // console.log(latlngdata);
     return (
@@ -82,15 +78,9 @@ ezstandalone.display();
 
 
             <Helmet>
-
-
-                <title>Mayank</title>
                 <script type="text/javascript">
-                    {abcd}
-
-
+                    {adsHeadScript}
                 </script>
-
             </Helmet>
 
             <Banner latlngdata={latlngdata} />
@@ -98,9 +88,7 @@ ezstandalone.display();
 
             {/* <section className="secPad">
                 <div className="container">
-
-                    <GoogleADS placeholderId='108' width='728px' height='90px' slotno='3956446321' />
-
+                    <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
                 </div>
             </section> */}
 
@@ -110,11 +98,11 @@ ezstandalone.display();
             <ResearchYourApt />
 
 
-            {/* <section className="secPad">
+            <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
                 </div>
-            </section> */}
+            </section>
 
 
             {/* HIIII */}
@@ -150,11 +138,11 @@ ezstandalone.display();
 
             <EmailSubs />
 
-            {/* <section className="secPad">
+            <section className="secPad">
                 <div className="container">
                     <GoogleADS placeholderId='145' width='970px' height='250px' slotno='1279625173' />
                 </div>
-            </section> */}
+            </section>
 
             <Footer />
 

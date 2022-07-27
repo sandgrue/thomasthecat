@@ -6,12 +6,26 @@ import { NearbyAgenciesAccordion } from '../HousingAuthority/NearbyAgenciesAccor
 import RentalAssistance from '../../containers/RentalAssistance'
 import Fbpage from '../fbpage/Fbpage'
 import GoogleADS from '../../containers/GoogleADS'
+import { Helmet } from 'react-helmet'
 
 const IncomeLimits = () => {
-    document.title = "Income Limits - Rental Housing Deals"
+    document.title = "Income Limits - Rental Housing Deals";
 
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618,632, 149);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
     return (
         <>
+
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
             <section className="secPad24">
                 <div className="container">
                     <div className="row">
@@ -510,9 +524,9 @@ const IncomeLimits = () => {
 
                                 <AffordabilityCal />
 
-                                {/* <div style={{ "margin-top": '24px' }}>
+                                <div style={{ "margin-top": '24px' }}>
                                     <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div> */}
+                                </div>
 
                                 {/* <div className="accordionBoxInfo losAngeles">
                                 <div id="accordion4">
@@ -580,9 +594,9 @@ const IncomeLimits = () => {
                                 <div className="margin24">
                                     <img className="w-100" src={require('../../assets/img/image145.png').default} />
                                 </div>
-                                {/* <div style={{ "margin-top": '24px' }}>
-                                    <GoogleADS placeholderId='632' width='300px' height='600px' slotno='1505526895' />
-                                </div> */}
+                                <div style={{ "margin-top": '24px' }}>
+                                    <GoogleADS placeholderId='149' width='300px' height='600px' slotno='2347851182' />
+                                </div>
                             </div>
                         </div>
                     </div>

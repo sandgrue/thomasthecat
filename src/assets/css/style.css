@@ -10918,3 +10918,8 @@ input[type="radio"]:checked {
 .abcdefgh {
   background-color: red;
 }
+
+.whiteBg {
+  background-color: #fff !important;
+  color: #fff !important;
+}

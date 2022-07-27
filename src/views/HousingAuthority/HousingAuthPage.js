@@ -17,6 +17,7 @@ import Loader from '../../containers/Loader';
 import RentalAssistance from '../../containers/RentalAssistance'
 import Fbpage from '../fbpage/Fbpage.js';
 import GoogleADS from '../../containers/GoogleADS';
+import { Helmet } from 'react-helmet';
 
 const HousingAuthPage = () => {
     document.title = "Housing Authority - Rental Housing Deals"
@@ -209,10 +210,25 @@ const HousingAuthPage = () => {
             }).catch(error => {
                 console.log('error', error);
             });
-    }, [searchterm])
+    }, [searchterm]);
+
+
+    const adsHeadScript = `var ezstandalone = ezstandalone || { };
+    ezstandalone.cmd = ezstandalone.cmd || [];
+    ezstandalone.cmd.push(function () {
+    ezstandalone.define(618, 632,633);
+    ezstandalone.enable();
+    ezstandalone.display();
+    });`
 
     return (
         <>
+
+            <Helmet>
+                <script type="text/javascript">
+                    {adsHeadScript}
+                </script>
+            </Helmet>
             <section className="secPad24 agenciesLanding pb-0 housingAuthoritya topPaddSec">
                 <div className="container">
                     <div className="row">
@@ -423,9 +439,9 @@ const HousingAuthPage = () => {
                                 </div>
 
 
-                                {/* <div >
+                                <div >
                                     <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
-                                </div> */}
+                                </div>
 
                                 <Emailsubs2 />
 
@@ -446,9 +462,9 @@ const HousingAuthPage = () => {
                                         <NearbyAgenciesAccordion data={nearbyagencydata} />
                                 }
 
-                                {/* <div>
+                                <div>
                                     <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
-                                </div> */}
+                                </div>
 
 
                                 <AffordabilityCal />
@@ -460,9 +476,9 @@ const HousingAuthPage = () => {
                                 <CityCountyQuickFacts propincome={countydata} />
 
 
-                                {/* <div>
-                                    <GoogleADS placeholderId='632' width='300px' height='250px' slotno='3854651772' />
-                                </div> */}
+                                <div>
+                                    <GoogleADS placeholderId='633' width='300px' height='250px' slotno='4974014528' />
+                                </div>
 
 
                                 <div className="margin24">
