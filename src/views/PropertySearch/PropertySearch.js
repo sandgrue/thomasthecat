@@ -27,7 +27,7 @@ import { Form } from 'react-bootstrap';
 import { changeMapStateAction, getPropListAccordingToCityAndState, getPropListAccordingToMap } from '../../actions';
 import { amenitieslist, apt_type, numberofbeds, numberofbaths } from '../../constants/arraysLists';
 import CityWiseList from './CityWiseList';
-import { ERROR, FIRSTAPI, SECONDAPI, THIRDAPI } from '../../constants/constants';
+import { ERROR, FIRSTAPI, GOOGLEADSCLIENTID, SECONDAPI, THIRDAPI } from '../../constants/constants';
 import GoogleADS from '../../containers/GoogleADS';
 import { Helmet } from 'react-helmet';
 
@@ -1199,7 +1199,15 @@ const PropertySearch = () => {
                                                                                     <>
                                                                                         {index == 4 ?
                                                                                             <li className="listingBlock2 responsive-15">
-                                                                                                <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' />
+                                                                                                {/* <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' /> */}
+                                                                                                <div>
+                                                                                                    <ins class="adsbygoogle"
+                                                                                                        style={{
+                                                                                                            display: "inline-block"
+                                                                                                        }}
+                                                                                                        data-ad-client={GOOGLEADSCLIENTID}
+                                                                                                        data-ad-slot='2539422872'></ins>
+                                                                                                </div>
 
                                                                                             </li>
                                                                                             :
@@ -1208,7 +1216,16 @@ const PropertySearch = () => {
                                                                                         {
                                                                                             index == 9 ?
                                                                                                 <li className="listingBlock2 responsive-15">
-                                                                                                    <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' />
+                                                                                                    <div>
+                                                                                                        <ins class="adsbygoogle"
+                                                                                                            style={{
+                                                                                                                display: "inline-block"
+                                                                                                                // , width: `100%`, height: `100%`
+                                                                                                            }}
+                                                                                                            data-ad-client={GOOGLEADSCLIENTID}
+                                                                                                            data-ad-slot='6665520080'></ins>
+                                                                                                    </div>
+                                                                                                    {/* <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' /> */}
 
                                                                                                 </li>
                                                                                                 :

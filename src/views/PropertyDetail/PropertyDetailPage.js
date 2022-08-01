@@ -40,6 +40,7 @@ import { statelist } from '../../assets/JSONs/jsons';
 import { numberofoccupants } from '../../constants/arraysLists';
 import GoogleADS from '../../containers/GoogleADS';
 import { Helmet } from 'react-helmet';
+import { GOOGLEADSCLIENTID } from '../../constants/constants';
 
 
 const PropertyDetailPage = ({ post }) => {
@@ -2901,7 +2902,14 @@ const PropertyDetailPage = ({ post }) => {
 
 
                                 <div>
-                                    <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' />
+                                    {/* <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' /> */}
+                                    <ins class="adsbygoogle"
+                                        style={{
+                                            display: "inline-block"
+                                            // , width: `100%`, height: `100%`
+                                        }}
+                                        data-ad-client={GOOGLEADSCLIENTID}
+                                        data-ad-slot={'3956446321'}></ins>
                                 </div>
 
 
@@ -3377,7 +3385,14 @@ const PropertyDetailPage = ({ post }) => {
                                 </div>
 
                                 <div style={{ "margin-top": '24px' }}>
-                                    <GoogleADS placeholderId='632' width='300px' height='250px' slotno='6857091773' />
+                                    <ins class="adsbygoogle"
+                                        style={{
+                                            display: "inline-block"
+                                            // , width: `100%`, height: `100%`
+                                        }}
+                                        data-ad-client={GOOGLEADSCLIENTID}
+                                        data-ad-slot={'6857091773'}></ins>
+                                    {/* <GoogleADS placeholderId='632' width='300px' height='250px' slotno='6857091773' /> */}
                                 </div>
 
                                 <IncomeLimitsAccordion propdetails={propdetails} specialtitle={specialtitle} subsidized={propdetails.subsidized} />
@@ -3400,7 +3415,14 @@ const PropertyDetailPage = ({ post }) => {
                                 <AffordabilityCal />
                                 <CityCountyQuickFacts propincome={propincome} />
                                 <div style={{ "margin-top": '24px' }}>
-                                    <GoogleADS placeholderId='149' width='300px' height='600px' slotno='1505526895' />
+                                    <ins class="adsbygoogle"
+                                        style={{
+                                            display: "inline-block"
+                                            // , width: `100%`, height: `100%`
+                                        }}
+                                        data-ad-client={GOOGLEADSCLIENTID}
+                                        data-ad-slot={'1505526895'}></ins>
+                                    {/* <GoogleADS placeholderId='149' width='300px' height='600px' slotno='1505526895' /> */}
                                 </div>
                             </div>
                         </div>
@@ -3421,7 +3443,14 @@ const PropertyDetailPage = ({ post }) => {
                         </div>
 
                         <div>
-                            <GoogleADS placeholderId='145' width='970px' height='250px' slotno='7791749557' />
+                            <ins class="adsbygoogle"
+                                style={{
+                                    display: "inline-block"
+                                    // , width: `100%`, height: `100%`
+                                }}
+                                data-ad-client={GOOGLEADSCLIENTID}
+                                data-ad-slot={'7791749557'}></ins>
+                            {/* <GoogleADS placeholderId='145' width='970px' height='250px' slotno='7791749557' /> */}
                         </div>
 
 
