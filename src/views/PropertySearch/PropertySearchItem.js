@@ -427,35 +427,35 @@ export const PropertySearchItem = ({ post }) => {
 
 
     // const secretKey = '6Ld0V8sgAAAAAJngehOac0eHt140tM5c51CTqFQH'
-    // const handleLoaded = _ => {
-    //     window.grecaptcha.ready(_ => {
-    //         window.grecaptcha
-    //             .execute("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI", { action: 'sdfreg' })
-    //             .then(token => {
-    //                 console.log(token);
+    const handleLoaded = _ => {
+        window.grecaptcha.ready(_ => {
+            window.grecaptcha
+                .execute("6Ld3X8ggAAAAAAKaJ5gDXpXHyJPQsE83lvQrI9Uh", { action: 'sdrefs' })
+                .then(token => {
+                    console.log(token, "token");
 
-    //                 if (token == undefined || token == '' || token == null) {
-    //                 } else {
-    //                     var requestOptions = {
-    //                         method: 'POST',
-    //                         redirect: 'follow'
-    //                     };
-    //                     fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6Ld0V8sgAAAAAJngehOac0eHt140tM5c51CTqFQH&response=${token}`, requestOptions)
-    //                         .then(response => response.json())
-    //                         .then(result => console.log(result))
-    //                         .catch(error => console.log(error));
-    //                 }
-    //             })
-    //     })
-    // }
+                    // if (token == undefined || token == '' || token == null) {
+                    // } else {
+                    //     var requestOptions = {
+                    //         method: 'POST',
+                    //         redirect: 'follow'
+                    //     };
+                    //     fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6Ld0V8sgAAAAAJngehOac0eHt140tM5c51CTqFQH&response=${token}`, requestOptions)
+                    //         .then(response => response.json())
+                    //         .then(result => console.log(result))
+                    //         .catch(error => console.log(error));
+                    // }
+                })
+        })
+    }
 
 
-    // useEffect(() => {
-    //     const script = document.createElement("script")
-    //     script.src = 'https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-    //     script.addEventListener('load', handleLoaded)
-    //     document.body.appendChild(script)
-    // }, []);
+    useEffect(() => {
+        const script = document.createElement("script")
+        script.src = 'https://www.google.com/recaptcha/api.js?render=6Ld3X8ggAAAAAAKaJ5gDXpXHyJPQsE83lvQrI9Uh'
+        script.addEventListener('load', handleLoaded)
+        document.body.appendChild(script)
+    }, []);
 
 
 
@@ -1284,16 +1284,16 @@ export const PropertySearchItem = ({ post }) => {
                                                                 <div className="form-group">
                                                                     <div className="recaptcha_block">
 
-                                                                        <ReCAPTCHA
+                                                                        {/* <ReCAPTCHA
                                                                             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                                                                             onChange={captchaHandle}
-                                                                        />
+                                                                        /> */}
 
-                                                                        {/* <div
+                                                                        <div
                                                                             className="g-recaptcha"
-                                                                            data-sitekey={'6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                                                                            data-sitekey={'6Ld3X8ggAAAAAAKaJ5gDXpXHyJPQsE83lvQrI9Uh'}
                                                                             data-size="invisible"
-                                                                        ></div> */}
+                                                                        ></div>
 
 
 

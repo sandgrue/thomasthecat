@@ -9445,10 +9445,19 @@ iframe {
   right: 0;
   width: 100%;
   background: rgba(252, 252, 253, 0.9);
-  /* border: 1px solid #e4e7e9; */
   left: auto;
   width: calc(100% - 725px);
 }
+/* .map-fixed {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(252, 252, 253, 0.9);
+  left: 0;
+  width: 100%;
+  display: none;
+} */
 
 .listingSection.map-filter-section {
   position: relative;

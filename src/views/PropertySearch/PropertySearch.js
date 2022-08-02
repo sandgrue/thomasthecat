@@ -27,7 +27,7 @@ import { Form } from 'react-bootstrap';
 import { changeMapStateAction, getPropListAccordingToCityAndState, getPropListAccordingToMap } from '../../actions';
 import { amenitieslist, apt_type, numberofbeds, numberofbaths } from '../../constants/arraysLists';
 import CityWiseList from './CityWiseList';
-import { ERROR, FIRSTAPI, GOOGLEADSCLIENTID, SECONDAPI, THIRDAPI } from '../../constants/constants';
+import { ERROR, FIRSTAPI, SECONDAPI, THIRDAPI } from '../../constants/constants';
 import GoogleADS from '../../containers/GoogleADS';
 import { Helmet } from 'react-helmet';
 
@@ -1077,321 +1077,313 @@ const PropertySearch = () => {
 
             <section className="listingPage secPad24 propertySearchPage premium">
                 <div className="container2">
-                    <div className="row">
-                        <div
-                            className="listting-search-left">
+                    <div className="row">          
+
+                                               
+
+                        {/* <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">    */}
+                            <div
+                                className="listting-search-left">
 
 
-                            {
-                                (searchresultdata == null || searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0) ?
-                                    <Loader />
-                                    :
+                                {
+                                    (searchresultdata == null || searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0) ?
+                                        <Loader />
+                                        :
 
-                                    (
-                                        // typeofdata == "CITY" 
-                                        typeOfApi == THIRDAPI
-                                            ?
-                                            <>
-                                                <CityWiseList searchresultdata={searchresultdata} />
-                                            </>
-                                            :
-                                            <>
-                                                <div className="listingSection map-filter-section">
-                                                    <div className="cst adjustment">
-                                                        <div className="itemWebsite">
-                                                            <nav className="navbar resNavbarBread" aria-label="breadcrumb">
-                                                                <ol className="breadcrumb font-weight500 mb-0">
-                                                                    <li className="breadcrumb-item fontSize14"><a href="/" className=' purpleText' > Home</a></li>
-                                                                    <li className="breadcrumb-item fontSize14 purpleText"><a href="/" className=' purpleText' >{feature == 'senior' ? 'Senior Housing' : (feature == 'section' ? 'Section 8 Housing' : 'Rentals')}</a></li>
-                                                                    <li className="breadcrumb-item fontSize14 purpleText"><a href={`/propertySearch//${statename}`} className={city == undefined || city == '' ? 'activeimp' : 'purpleText'} >{statename.toUpperCase()}</a></li>
-                                                                    {city == undefined || city == '' ? null : <li className="breadcrumb-item fontSize14 active">{capitalise(city)}</li>}
-                                                                </ol>
-                                                            </nav>
-                                                        </div>
-                                                        <h1 className="font-weight400 mb-0 fontSize18">Apartments for rent in or near {city == undefined || city == '' ? null : `${capitalise(city)},`} {statename.toUpperCase()}</h1>
-                                                        <div className="tagList d-flex align-items-center">
-
-
-                                                            <div className="itemWebsite w-167 mr-1 apat">
-                                                                <MySelect
-                                                                    placeholder={'Apartment Type'}
-                                                                    options={apt_type}
-                                                                    // !isMulti
-                                                                    closeMenuOnSelect={false}
-                                                                    hideSelectedOptions={false}
-                                                                    components={{ Option, MultiValue, animatedComponents }}
-                                                                    onChange={selectchange}
-                                                                    allowSelectAll={false}
-                                                                    value={selectapartment}
-                                                                />
+                                        (
+                                            // typeofdata == "CITY" 
+                                            typeOfApi == THIRDAPI
+                                                ?
+                                                <>
+                                                    <CityWiseList searchresultdata={searchresultdata} />
+                                                </>
+                                                :
+                                                <>
+                                                    <div className="listingSection map-filter-section">
+                                                        <div className="cst adjustment">
+                                                            <div className="itemWebsite">
+                                                                <nav className="navbar resNavbarBread" aria-label="breadcrumb">
+                                                                    <ol className="breadcrumb font-weight500 mb-0">
+                                                                        <li className="breadcrumb-item fontSize14"><a href="/" className=' purpleText' > Home</a></li>
+                                                                        <li className="breadcrumb-item fontSize14 purpleText"><a href="/" className=' purpleText' >{feature == 'senior' ? 'Senior Housing' : (feature == 'section' ? 'Section 8 Housing' : 'Rentals')}</a></li>
+                                                                        <li className="breadcrumb-item fontSize14 purpleText"><a href={`/propertySearch//${statename}`} className={city == undefined || city == '' ? 'activeimp' : 'purpleText'} >{statename.toUpperCase()}</a></li>
+                                                                        {city == undefined || city == '' ? null : <li className="breadcrumb-item fontSize14 active">{capitalise(city)}</li>}
+                                                                    </ol>
+                                                                </nav>
                                                             </div>
-
-                                                            <div className="itemWebsite w-130 mr-1 bedd">
-                                                                <MySelect
-                                                                    placeholder={'Beds'}
-                                                                    options={numberofbeds}
-                                                                    isMulti
-                                                                    closeMenuOnSelect={false}
-                                                                    hideSelectedOptions={false}
-                                                                    components={{ Option, MultiValue, animatedComponents }}
-                                                                    onChange={selectedBeds}
-                                                                    allowSelectAll={false}
-                                                                    value={selectBeds}
-                                                                />
-                                                            </div>
-
-                                                            <div className="itemWebsite w-130 mr-1 bbaaths">
-                                                                <MySelect
-                                                                    placeholder={'Baths'}
-                                                                    options={numberofbaths}
-                                                                    isMulti
-                                                                    closeMenuOnSelect={false}
-                                                                    hideSelectedOptions={false}
-                                                                    components={{ Option, MultiValue, animatedComponents }}
-                                                                    onChange={selectedBaths}
-                                                                    allowSelectAll={false}
-                                                                    value={selectBaths}
-                                                                />
-                                                            </div>
-
-                                                            <div className="dropdown">
-                                                                <ul className="noMarginPad listStyleNone clearfix">
-                                                                    <li className="secondaryColor itemTag " onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
-                                                                </ul>
-                                                            </div>
-                                                            {/* if the filters are active below code 
-                                            <div className="dropdown">
-                                                <ul className="noMarginPad listStyleNone clearfix">
-                                                    <li className="secondaryColor itemTag active" onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
-                                                </ul>
-                                            </div> */}
+                                                            <h1 className="font-weight400 mb-0 fontSize18">Apartments for rent in or near {city == undefined || city == '' ? null : `${capitalise(city)},`} {statename.toUpperCase()}</h1>
+                                                            <div className="tagList d-flex align-items-center">
 
 
-                                                            <div className="ml-auto itemWebsite">
-                                                                <h4 className="numProperty colorBlue fontSize16 font-weight700 mb-0">
-                                                                    {searchresultdata == null || searchresultdata.length == 0 ? 0 : totalcount} Properties</h4>
+                                                                <div className="itemWebsite w-167 mr-1 apat">
+                                                                    <MySelect
+                                                                        placeholder={'Apartment Type'}
+                                                                        options={apt_type}
+                                                                        // !isMulti
+                                                                        closeMenuOnSelect={false}
+                                                                        hideSelectedOptions={false}
+                                                                        components={{ Option, MultiValue, animatedComponents }}
+                                                                        onChange={selectchange}
+                                                                        allowSelectAll={false}
+                                                                        value={selectapartment}
+                                                                    />
+                                                                </div>
+
+                                                                <div className="itemWebsite w-130 mr-1 bedd">
+                                                                    <MySelect
+                                                                        placeholder={'Beds'}
+                                                                        options={numberofbeds}
+                                                                        isMulti
+                                                                        closeMenuOnSelect={false}
+                                                                        hideSelectedOptions={false}
+                                                                        components={{ Option, MultiValue, animatedComponents }}
+                                                                        onChange={selectedBeds}
+                                                                        allowSelectAll={false}
+                                                                        value={selectBeds}
+                                                                    />
+                                                                </div>
+
+                                                                <div className="itemWebsite w-130 mr-1 bbaaths">
+                                                                    <MySelect
+                                                                        placeholder={'Baths'}
+                                                                        options={numberofbaths}
+                                                                        isMulti
+                                                                        closeMenuOnSelect={false}
+                                                                        hideSelectedOptions={false}
+                                                                        components={{ Option, MultiValue, animatedComponents }}
+                                                                        onChange={selectedBaths}
+                                                                        allowSelectAll={false}
+                                                                        value={selectBaths}
+                                                                    />
+                                                                </div>
+
+                                                                <div className="dropdown">
+                                                                    <ul className="noMarginPad listStyleNone clearfix">
+                                                                        <li className="secondaryColor itemTag " onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
+                                                                    </ul>
+                                                                </div>
+                                                                {/* if the filters are active below code 
+                                                <div className="dropdown">
+                                                    <ul className="noMarginPad listStyleNone clearfix">
+                                                        <li className="secondaryColor itemTag active" onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
+                                                    </ul>
+                                                </div> */}
+
+
+                                                                <div className="ml-auto itemWebsite">
+                                                                    <h4 className="numProperty colorBlue fontSize16 font-weight700 mb-0">
+                                                                        {searchresultdata == null || searchresultdata.length == 0 ? 0 : totalcount} Properties</h4>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="listingSection adjustment1">
+                                                    <div className="listingSection adjustment1">
 
 
-                                                    <div className="propertyList propertyListScroll boxscroll4">
+                                                        <div className="propertyList propertyListScroll boxscroll4">
 
-                                                        <div className="wrapperScroll ">
-                                                            <ul className="noMarginPad listStyleNone">
+                                                            <div className="wrapperScroll ">
+                                                                <ul className="noMarginPad listStyleNone">
 
-                                                                {
+                                                                    {
 
-                                                                    searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0 || searchresultdata == null || typeOfApi == FIRSTAPI
-                                                                        ?
-                                                                        <>
-                                                                            <Loader />
-                                                                        </>
-                                                                        :
-                                                                        searchresultdata == ERROR
+                                                                        searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0 || searchresultdata == null || typeOfApi == FIRSTAPI
                                                                             ?
-                                                                            window.location.replace("/error404")
+                                                                            <>
+                                                                                <Loader />
+                                                                            </>
                                                                             :
-                                                                            (
-                                                                                searchresultdata.slice(head, tail).map((post, index) => (
-                                                                                    <>
-                                                                                        {index == 4 ?
-                                                                                            <li className="listingBlock2 responsive-15">
-                                                                                                {/* <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' /> */}
-                                                                                                <div>
-                                                                                                    <ins class="adsbygoogle"
-                                                                                                        style={{
-                                                                                                            display: "inline-block"
-                                                                                                        }}
-                                                                                                        data-ad-client={GOOGLEADSCLIENTID}
-                                                                                                        data-ad-slot='2539422872'></ins>
-                                                                                                </div>
-
-                                                                                            </li>
-                                                                                            :
-                                                                                            null
-                                                                                        }
-                                                                                        {
-                                                                                            index == 9 ?
+                                                                            searchresultdata == ERROR
+                                                                                ?
+                                                                                window.location.replace("/error404")
+                                                                                :
+                                                                                (
+                                                                                    searchresultdata.slice(head, tail).map((post, index) => (
+                                                                                        <>
+                                                                                            {index == 4 ?
                                                                                                 <li className="listingBlock2 responsive-15">
-                                                                                                    <div>
-                                                                                                        <ins class="adsbygoogle"
-                                                                                                            style={{
-                                                                                                                display: "inline-block"
-                                                                                                                // , width: `100%`, height: `100%`
-                                                                                                            }}
-                                                                                                            data-ad-client={GOOGLEADSCLIENTID}
-                                                                                                            data-ad-slot='6665520080'></ins>
-                                                                                                    </div>
-                                                                                                    {/* <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' /> */}
+                                                                                                    <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' />
 
                                                                                                 </li>
                                                                                                 :
                                                                                                 null
-                                                                                        }
-                                                                                        <li className="listingBlock2 responsive-15"
-                                                                                            onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
-                                                                                            onMouseLeave={() => clearLatlng()}
-                                                                                        >
-                                                                                            <PropertySearchItem post={post} />
-                                                                                        </li>
-
-                                                                                    </>
-                                                                                )
-                                                                                )
-                                                                            )
-                                                                }
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-
-                                                    {/* pagination */}
-                                                    {
-                                                        lastpage == undefined || lastpage == 0 || lastpage == '' || totalcount < 26 ? null :
-                                                            <div className="pagination">
-                                                                <ul className="noMarginPad listStyleNone">
-
-                                                                    {/* left arrow  */}
-                                                                    {
-                                                                        currentpage == 1
-                                                                            ?
-                                                                            null
-                                                                            :
-                                                                            <li className="paginationNum arrowRight" onClick={() => {
-                                                                                if (currentpage <= 4) {
-                                                                                    currentpagechange(currentpage - 1);
-                                                                                    // setsearchresultdata();
-                                                                                }
-                                                                                else {
-                                                                                    setfourpage(currentpage - 1);
-                                                                                    currentpagechange(currentpage - 1);
-                                                                                    // setsearchresultdata();
-                                                                                }
-                                                                            }}>
-                                                                                <img src={require('../../assets/img/checvronpl.png').default} />
-                                                                            </li>
-                                                                    }
-
-
-
-                                                                    {/* before dots section  */}
-                                                                    {
-
-                                                                        <>
-                                                                            {
-                                                                                lastpage < 8
-                                                                                    ?
-                                                                                    (
-                                                                                        tagarray.slice(0, lastpage).map(
-                                                                                            (data) => {
-                                                                                                return (
-                                                                                                    data
-                                                                                                );
                                                                                             }
-                                                                                        )
+                                                                                            {
+                                                                                                index == 9 ?
+                                                                                                    <li className="listingBlock2 responsive-15">
+                                                                                                        <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' />
+
+                                                                                                    </li>
+                                                                                                    :
+                                                                                                    null
+                                                                                            }
+                                                                                            <li className="listingBlock2 responsive-15"
+                                                                                                onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
+                                                                                                onMouseLeave={() => clearLatlng()}
+                                                                                            >
+                                                                                                <PropertySearchItem post={post} />
+                                                                                            </li>
+
+                                                                                        </>
                                                                                     )
-                                                                                    :
-                                                                                    <>
-                                                                                        <li className={`${currentpage == fourpage - 3 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(fourpage - 3);
-                                                                                        }}>{fourpage - 3}</li>
-
-                                                                                        <li className={`${currentpage == (fourpage - 2) ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(fourpage - 2);
-                                                                                        }}>{fourpage - 2}</li>
-
-                                                                                        <li className={`${currentpage == fourpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(fourpage - 1);
-                                                                                        }}>{fourpage - 1}</li>
-
-                                                                                        <li className={`${currentpage == fourpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(fourpage);
-                                                                                        }}>{fourpage}</li>
-                                                                                    </>
-                                                                            }
-
-
-
-
-
-                                                                            {/* after dots section  */}
-                                                                            {
-                                                                                lastpage > 7
-                                                                                    ?
-                                                                                    <>
-                                                                                        <li className="dotsBlock">...</li>
-
-                                                                                        <li className={`${currentpage == lastpage - 2 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(lastpage - 2);
-                                                                                        }}>{lastpage - 2}</li>
-
-                                                                                        <li className={`${currentpage == lastpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(lastpage - 1);
-                                                                                        }}>{lastpage - 1}</li>
-
-                                                                                        <li className={`${currentpage == lastpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                            currentpagechange(lastpage);
-                                                                                        }}>{lastpage}</li>
-                                                                                    </>
-                                                                                    :
-                                                                                    null
-                                                                            }
-
-
-                                                                        </>
-                                                                    }
-
-
-                                                                    {/* right aRROW  */}
-                                                                    {
-                                                                        currentpage == lastpage
-                                                                            ?
-                                                                            null
-                                                                            :
-                                                                            <li className="paginationNum arrowRight" onClick={() => {
-                                                                                if (currentpage >= 4) {
-                                                                                    setfourpage(currentpage + 1);
-                                                                                    currentpagechange(currentpage + 1);
-                                                                                }
-                                                                                else {
-                                                                                    currentpagechange(currentpage + 1);
-                                                                                }
-                                                                            }}>
-
-                                                                                <img src={require('../../assets/img/checvronpr.png').default} />
-                                                                            </li>
+                                                                                    )
+                                                                                )
                                                                     }
                                                                 </ul>
-                                                                <p className="mb-0 fontSize14 font-weight400 text-center mt-1 secondaryColor">Showing&nbsp;
-                                                                    {
-                                                                        lastpage == 1 ?
-                                                                            <>{1}-{totalcount} of&nbsp;{totalcount}</>
-                                                                            :
+                                                            </div>
+                                                        </div>
+
+
+                                                        {/* pagination */}
+                                                        {
+                                                            lastpage == undefined || lastpage == 0 || lastpage == '' || totalcount < 26 ? null :
+                                                                <div className="pagination">
+                                                                    <ul className="noMarginPad listStyleNone">
+
+                                                                        {/* left arrow  */}
+                                                                        {
+                                                                            currentpage == 1
+                                                                                ?
+                                                                                null
+                                                                                :
+                                                                                <li className="paginationNum arrowRight" onClick={() => {
+                                                                                    if (currentpage <= 4) {
+                                                                                        currentpagechange(currentpage - 1);
+                                                                                        // setsearchresultdata();
+                                                                                    }
+                                                                                    else {
+                                                                                        setfourpage(currentpage - 1);
+                                                                                        currentpagechange(currentpage - 1);
+                                                                                        // setsearchresultdata();
+                                                                                    }
+                                                                                }}>
+                                                                                    <img src={require('../../assets/img/checvronpl.png').default} />
+                                                                                </li>
+                                                                        }
+
+
+
+                                                                        {/* before dots section  */}
+                                                                        {
+
                                                                             <>
                                                                                 {
-                                                                                    currentpage == lastpage ?
-                                                                                        <>{currentpage * 25 - 24}-{totalcount} of&nbsp;{totalcount}</>
+                                                                                    lastpage < 8
+                                                                                        ?
+                                                                                        (
+                                                                                            tagarray.slice(0, lastpage).map(
+                                                                                                (data) => {
+                                                                                                    return (
+                                                                                                        data
+                                                                                                    );
+                                                                                                }
+                                                                                            )
+                                                                                        )
                                                                                         :
-                                                                                        <>{currentpage * 25 - 24}-{currentpage * 25} of&nbsp;{totalcount}</>
-                                                                                }
-                                                                            </>
+                                                                                        <>
+                                                                                            <li className={`${currentpage == fourpage - 3 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(fourpage - 3);
+                                                                                            }}>{fourpage - 3}</li>
 
-                                                                    }
-                                                                    &nbsp;Results</p>
-                                                            </div>
-                                                    }
-                                                </div>
-                                            </>
-                                    )
-                            }
-                            <Footer />
-                        </div>
+                                                                                            <li className={`${currentpage == (fourpage - 2) ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(fourpage - 2);
+                                                                                            }}>{fourpage - 2}</li>
+
+                                                                                            <li className={`${currentpage == fourpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(fourpage - 1);
+                                                                                            }}>{fourpage - 1}</li>
+
+                                                                                            <li className={`${currentpage == fourpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(fourpage);
+                                                                                            }}>{fourpage}</li>
+                                                                                        </>
+                                                                                }
+
+
+
+
+
+                                                                                {/* after dots section  */}
+                                                                                {
+                                                                                    lastpage > 7
+                                                                                        ?
+                                                                                        <>
+                                                                                            <li className="dotsBlock">...</li>
+
+                                                                                            <li className={`${currentpage == lastpage - 2 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(lastpage - 2);
+                                                                                            }}>{lastpage - 2}</li>
+
+                                                                                            <li className={`${currentpage == lastpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(lastpage - 1);
+                                                                                            }}>{lastpage - 1}</li>
+
+                                                                                            <li className={`${currentpage == lastpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                                currentpagechange(lastpage);
+                                                                                            }}>{lastpage}</li>
+                                                                                        </>
+                                                                                        :
+                                                                                        null
+                                                                                }
+
+
+                                                                            </>
+                                                                        }
+
+
+                                                                        {/* right aRROW  */}
+                                                                        {
+                                                                            currentpage == lastpage
+                                                                                ?
+                                                                                null
+                                                                                :
+                                                                                <li className="paginationNum arrowRight" onClick={() => {
+                                                                                    if (currentpage >= 4) {
+                                                                                        setfourpage(currentpage + 1);
+                                                                                        currentpagechange(currentpage + 1);
+                                                                                    }
+                                                                                    else {
+                                                                                        currentpagechange(currentpage + 1);
+                                                                                    }
+                                                                                }}>
+
+                                                                                    <img src={require('../../assets/img/checvronpr.png').default} />
+                                                                                </li>
+                                                                        }
+                                                                    </ul>
+                                                                    <p className="mb-0 fontSize14 font-weight400 text-center mt-1 secondaryColor">Showing&nbsp;
+                                                                        {
+                                                                            lastpage == 1 ?
+                                                                                <>{1}-{totalcount} of&nbsp;{totalcount}</>
+                                                                                :
+                                                                                <>
+                                                                                    {
+                                                                                        currentpage == lastpage ?
+                                                                                            <>{currentpage * 25 - 24}-{totalcount} of&nbsp;{totalcount}</>
+                                                                                            :
+                                                                                            <>{currentpage * 25 - 24}-{currentpage * 25} of&nbsp;{totalcount}</>
+                                                                                    }
+                                                                                </>
+
+                                                                        }
+                                                                        &nbsp;Results</p>
+                                                                </div>
+                                                        }
+                                                    </div>
+                                                </>
+                                        )
+                                }
+                                <div className="itemWebsite">
+                                    <Footer />
+                                </div>
+                                
+                            </div>
+                        {/* </div> */}
+
                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">
                             <div className="map-fixed">
-                                <div className="itemWebsite whiteBg h-94">
+                                <div className="whiteBg h-94">
                                     <div style={{ width: '766px', height: '94px' }}>
                                         <GoogleADS placeholderId='621' width='766px' height='94px' slotno='7791749557' />
                                     </div>
@@ -1428,22 +1420,14 @@ const PropertySearch = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div className="itemMobile secondFooter">
+                                <Footer />
+                            </div>                            
+                        </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1734,6 +1718,10 @@ const PropertySearch = () => {
                         </div>
                     </div>
                 </Modal>
+
+
+
+                
             </section>
 
 

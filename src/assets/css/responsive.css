@@ -1,6 +1,7 @@
 /*--website--*/
 
 @media only screen and (max-width: 640px){
+    
     .d-flex.buttonadj{
         display: block !important;
 
@@ -10,6 +11,9 @@
     }
 }
 @media only screen and (min-width: 991px){
+    .secondFooter{
+        display: none;
+    }
     .bottom-box{
         display: none;
     }
@@ -42,7 +46,17 @@
     }
 }
 @media only screen and (max-width: 991px){ 
-
+    .map-fixed {
+        position: relative;
+        top: 0px;
+        right: 0;
+        width: 100%;
+        background: rgba(252, 252, 253, 0.9);
+        left: auto;
+        width: calc(100% - 0);
+        /* display : none; */
+        /* height: 0px; */
+      }
 
 
     .minWidth200{
@@ -1244,9 +1258,9 @@ max-width: 360px;
 
 
 
-      .map-fixed{
+      /* .map-fixed{
         display: none;
-    }
+    } */
     .blogclass .blog-post {
         display: block;
     }
