@@ -18,11 +18,11 @@ const CityWiseList = ({ searchresultdata }) => {
                             {
                                 searchresultdata.slice(0, searchresultdata.length / 2 + 1).map((data) => (
                                     <li>
-                                            <Link to={`/agencyState?city=&state=AL`} className="listSearchAnchor transition">
-                                                <h5 className='mb-0'>{data.city}</h5>
-                                                <p className='mb-0'>{data.listingcount} listings</p>
-                                                <span className="rightArrowAction" ><img src={require('../../assets/img/rightArrowWhite.svg').default} /></span>
-                                            </Link>
+                                        <a href={`/propertySearch/${data.coordinate.property_city}/${data.coordinate.property_state}`} className="listSearchAnchor transition">
+                                            <h5 className='mb-0'>{data.city}</h5>
+                                            <p className='mb-0'>{data.listingcount} listings</p>
+                                            <span className="rightArrowAction" ><img src={require('../../assets/img/rightArrowWhite.svg').default} /></span>
+                                        </a>
                                     </li>
                                 ))
                             }
@@ -33,11 +33,11 @@ const CityWiseList = ({ searchresultdata }) => {
                             {
                                 searchresultdata.slice(searchresultdata.length / 2 + 1).map((data) => (
                                     <li>
-                                            <Link to={`/agencyState?city=&state=AL`} className="listSearchAnchor transition">
-                                                <h5 className='mb-0'>{data.city}</h5>
-                                                <p className='mb-0'>{data.listingcount} listings</p>
-                                                <span className="rightArrowAction"><img src={require('../../assets/img/rightArrowWhite.svg').default} /></span>
-                                            </Link>
+                                        <a href={`/propertySearch/${data.coordinate.property_city}/${data.coordinate.property_state}`} className="listSearchAnchor transition">
+                                            <h5 className='mb-0'>{data.city}</h5>
+                                            <p className='mb-0'>{data.listingcount} listings</p>
+                                            <span className="rightArrowAction"><img src={require('../../assets/img/rightArrowWhite.svg').default} /></span>
+                                        </a>
 
                                     </li>
                                 ))

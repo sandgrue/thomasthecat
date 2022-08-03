@@ -6,8 +6,9 @@ import CheckAvailibilityForm from "../../containers/CheckAvailibilityForm";
 import Starratingstatic from "../../containers/Starratingstatic";
 import axios from "axios";
 
-import { addOrRemoveProp, decimalRoundOff, getAllProp, toggleHeart } from "../../containers/functions";
+import { addOrRemoveProp, decimalRoundOff, getAllProp, isItNull, toggleHeart } from "../../containers/functions";
 import { sendMUltipleRequestes, tokenScoreCheck } from "../../api/api";
+import { captchaSecretKey, captchaSiteKey } from "../../constants/constants";
 
 export const PropertySearchItem = ({ post }) => {
 
@@ -319,17 +320,20 @@ export const PropertySearchItem = ({ post }) => {
         // console.log(formdata);
         fetchAfterCheckPropList();
 
+        console.log("token submitformclicked");
 
-        if (captchaValue == true) {
-            toggleModalAvailability();
-            toggleModalSecondList();
-            submitAllData();
-            // setformdata({ property_id: prop.id_property, first_name: '', last_name: '', phone: '', email_address: '', move_date: '', message: '' });
-        }
+        // if (captchaValue == true) {
+        // toggleModalAvailability();
+        // toggleModalSecondList();
+        startCaptchaProcess();
+        // submitAllData();
+        // setformdata({ property_id: prop.id_property, first_name: '', last_name: '', phone: '', email_address: '', move_date: '', message: '' });
+        // }
     };
 
     function submitAllData() {
 
+        console.log("token submit all data enter");
 
         // let formatDate = (date) => {
 
@@ -361,15 +365,15 @@ export const PropertySearchItem = ({ post }) => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/text");
 
-        var raw = JSON.stringify({
-            "property_id": "142",
-            "first_name": "john",
-            "last_name": "doe",
-            "email_address": "vinaxeh500@zneep.com",
-            "phone": "8874565211",
-            "message": "test msg",
-            "move_date": "27/02/2022"
-        });
+        // var raw = JSON.stringify({
+        //     "property_id": "142",
+        //     "first_name": "john",
+        //     "last_name": "doe",
+        //     "email_address": "vinaxeh500@zneep.com",
+        //     "phone": "8874565211",
+        //     "message": "test msg",
+        //     "move_date": "27/02/2022"
+        // });
 
         var requestOptions = {
             method: 'POST',
@@ -417,8 +421,6 @@ export const PropertySearchItem = ({ post }) => {
                     sendMUltipleRequestes(data);
                 }
             )
-
-
         }
 
         setformdata({ property_id: prop.property_id, first_name: '', last_name: '', phone: '', email_address: '', move_date: '', message: `${formdata.message}` });
@@ -427,35 +429,61 @@ export const PropertySearchItem = ({ post }) => {
 
 
     // const secretKey = '6Ld0V8sgAAAAAJngehOac0eHt140tM5c51CTqFQH'
-    // const handleLoaded = _ => {
-    //     window.grecaptcha.ready(_ => {
-    //         window.grecaptcha
-    //             .execute("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI", { action: 'sdfreg' })
-    //             .then(token => {
-    //                 console.log(token);
+    const loadCaptcha = _ => {
+        console.log("token Enter loadcaptcha");
+        window.grecaptcha.ready(_ => {
+            window.grecaptcha
+                .execute(captchaSiteKey, { action: 'sdrefs' })
+                .then(token => {
+                    console.log(token, "token");
 
-    //                 if (token == undefined || token == '' || token == null) {
-    //                 } else {
-    //                     var requestOptions = {
-    //                         method: 'POST',
-    //                         redirect: 'follow'
-    //                     };
-    //                     fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6Ld0V8sgAAAAAJngehOac0eHt140tM5c51CTqFQH&response=${token}`, requestOptions)
-    //                         .then(response => response.json())
-    //                         .then(result => console.log(result))
-    //                         .catch(error => console.log(error));
-    //                 }
-    //             })
-    //     })
-    // }
+                    if (!isItNull(token)) {
+                        var axios = require('axios');
+                        var data = '';
+
+                        var config = {
+                            method: 'post',
+                            url: `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/verifyCaptcha?secret=${captchaSecretKey}&response1=${token}`,
+                            headers: {},
+                            data: data
+                        };
+
+                        axios(config)
+                            .then(function (response) {
+                                if (response.data.success === true) {
+                                    setcaptchaValue(true);
+                                    toggleModalAvailability();
+                                    toggleModalSecondList();
+                                    submitAllData();
+                                } else {
+                                    setcaptchaValue(false);
+                                }
+                                // console.log(response.data.success, "token11");
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    }
+                })
+        });
+    }
 
 
-    // useEffect(() => {
-    //     const script = document.createElement("script")
-    //     script.src = 'https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-    //     script.addEventListener('load', handleLoaded)
-    //     document.body.appendChild(script)
-    // }, []);
+    // const
+
+    // const 
+
+    const startCaptchaProcess = () => {
+        if (!isItNull(formdata.move_date)) {
+            console.log("token startcaptchaprocess");
+            const script = document.createElement("script");
+            script.src = `https://www.google.com/recaptcha/api.js?render=${captchaSiteKey}`;
+            // script.addEventListener('load', loadCaptcha)
+            loadCaptcha();
+            document.body.appendChild(script);
+        }
+    }
+
 
 
 
@@ -1250,11 +1278,14 @@ export const PropertySearchItem = ({ post }) => {
                                                                             className="form-control"
                                                                             placeholder="Choose Move In Date"
                                                                             value={formdata.move_date}
-                                                                            onChange={(e) =>
+                                                                            onChange={(e) => {
                                                                                 setformdata({
                                                                                     ...formdata,
                                                                                     move_date: e.target.value,
-                                                                                })
+                                                                                });
+
+                                                                            }
+
                                                                             }
                                                                             required
                                                                         />
@@ -1284,25 +1315,25 @@ export const PropertySearchItem = ({ post }) => {
                                                                 <div className="form-group">
                                                                     <div className="recaptcha_block">
 
-                                                                        <ReCAPTCHA
+                                                                        {/* <ReCAPTCHA
                                                                             sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                                                                             onChange={captchaHandle}
-                                                                        />
+                                                                        /> */}
 
-                                                                        {/* <div
+                                                                        <div
                                                                             className="g-recaptcha"
-                                                                            data-sitekey={'6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+                                                                            data-sitekey={'6Ld3X8ggAAAAAAKaJ5gDXpXHyJPQsE83lvQrI9Uh'}
                                                                             data-size="invisible"
-                                                                        ></div> */}
+                                                                        ></div>
 
 
 
 
 
                                                                     </div>
-                                                                    {captchaValue == false ? (
+                                                                    {captchaValue === false ? (
                                                                         <span style={{ color: "red" }}>
-                                                                            Please Verify Captcha
+                                                                            Our System Found a bot on your browser
                                                                         </span>
                                                                     ) : null}
                                                                 </div>
@@ -1311,7 +1342,7 @@ export const PropertySearchItem = ({ post }) => {
                                                                 <div className="d-flex align-items-center availSec responsive15 flex-wrap p-0">
                                                                     <div className="Resnoauto">
                                                                         <button
-                                                                            onClick={captchacheck}
+                                                                            // onClick={captchacheck}
                                                                             className="brdrRadius4 transition w-100 d-flex align-items-center justify-content-center"
                                                                             type="submit"
                                                                         >
