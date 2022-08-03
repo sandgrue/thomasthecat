@@ -400,3 +400,14 @@ export const elementSearchInArray = (array, element) => {
     )
     return flag;
 }
+
+
+
+
+export const isItNull = (data) => {
+    if (data === undefined || data === null || data === '' || data.length === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
