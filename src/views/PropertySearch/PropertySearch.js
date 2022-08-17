@@ -19,7 +19,7 @@ import { default as ReactSelect } from "react-select";
 import makeAnimated from "react-select/animated";
 
 import MySelect from "./MySelect.js";
-import { capitalise, elementSearchInArray, findHighestCountCity, isItCityVISE, isObjectEmpty } from '../../containers/functions';
+import { capitalise, elementSearchInArray, findHighestCountCity, isItCityVISE, isItNull, isObjectEmpty } from '../../containers/functions';
 import { useDispatch, useSelector } from 'react-redux';
 import { func, number } from 'prop-types';
 import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
@@ -88,13 +88,37 @@ const PropertySearch = () => {
 
     const [fourpage, setfourpage] = useState(4);
 
-
+    // localStorage.clear();
 
 
 
     const [city, setcity] = useState("");
     const [statename, setstatename] = useState("");
     const [featureParameter, setfeatureParameter] = useState("");
+
+
+    let featureName = localStorage.getItem("featureName");
+
+
+
+    useEffect(() => {
+        if (isItNull(featureName)) {
+            localStorage.setItem("featureName", "");
+        } else {
+            localStorage.setItem("featureName", localStorage.getItem("featureName"));
+        }
+
+        return () => {
+            localStorage.setItem("featureName", "");
+        }
+
+    }, [featureName])
+
+
+    console.log(featureName, "FFFFF");
+
+
+
 
 
 
@@ -108,7 +132,7 @@ const PropertySearch = () => {
         } else {
             setcity(parameters.cityname);
             setstatename(parameters.statename);
-            setfeatureParameter(parameters.feature ? parameters.feature : "");
+            // setfeatureParameter(parameters.feature ? parameters.feature : "");
             setareNonQuestionParametersPresent(true);
             // console.log(parameters.cityname, parameters.statename, "TRUE");
         }
@@ -195,18 +219,31 @@ const PropertySearch = () => {
                 settail(24);
                 // console.log("111");
                 settypeofdata("CITY");
-                dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, true));
+                dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, true, apartmentstring, min_price, max_price, bedstring, bathstring));
             } else {
                 setsearchresultdata();
                 sethead(0);
                 settail(24);
                 // console.log("222");
                 settypeofdata("NON CITY");
-                dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, false));
+                dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, false, apartmentstring, min_price, max_price, bedstring, bathstring));
             }
         }
 
-    }, [areQuestionParametersPresent, areNonQuestionParametersPresent, arequestionparameterschanegd]);
+    }, [areQuestionParametersPresent, areNonQuestionParametersPresent, arequestionparameterschanegd, bedstring, bathstring, min_price, max_price, apartmentstring]);
+
+
+
+    // useEffect(() => {
+    //     
+    //     setsearchresultdata();
+    //     sethead(0);
+    //     settail(24);
+    //     // console.log("222");
+    //     settypeofdata("NON CITY");
+    //     dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, false, featureParameter, min_price, max_price, bedstring, bathstring));
+    // }, [selectBeds, selectBaths, selectapartment])
+
 
 
 
@@ -247,6 +284,9 @@ const PropertySearch = () => {
 
 
 
+
+
+
     const [isShown, setIsShown] = useState(false);
 
     const [currLat, setcurrLat] = useState();
@@ -260,8 +300,10 @@ const PropertySearch = () => {
 
 
 
-    let minprice = 0;
-    let maxprice = 5000;
+    // let minprice = 0;
+    // let maxprice = 5000;
+    const [minprice, setminprice] = useState(0);
+    const [maxprice, setmaxprice] = useState(5000)
 
 
     function currentpagechange(num) {
@@ -360,11 +402,86 @@ const PropertySearch = () => {
     }
 
 
-    const [selectapartment, setselectapartment] = useState([]);
+
+
+    const featureNNN = (str) => {
+        if (isItNull(str)) {
+            return 'Rental Deals';
+        } else {
+            return str;
+        }
+    }
+
+
+    const [apartmentstring, setapartmentstring] = useState('');
+
+
+
+    const [selectapartment, setselectapartment] = useState({ value: featureNNN(featureName), label: featureNNN(featureName) });
 
     let selectchange = (selected) => {
         setselectapartment(selected);
     }
+
+
+
+
+
+
+    useEffect(() => {
+        if (selectapartment.length == 0) {
+            // console.log(selectapartment, "LLL"); 
+        } else {
+            if (selectapartment.value == 'Senior Housing') {
+                // apartmentstring = 'senior';
+                setapartmentstring('senior');
+            }
+            else if (selectapartment.value == 'Section 8') {
+                // apartmentstring = 'section';
+                setapartmentstring('section');
+            }
+            else {
+                setapartmentstring('');
+                // apartmentstring = '';
+            }
+            // console.log(selectapartment, "LLL");
+        }
+
+
+        return () => {
+            setapartmentstring('');
+        }
+    }, [selectapartment]);
+
+
+    // console.log(apartmentstring, "FFFF1234");
+
+
+
+
+
+
+    // if (selectapartment.length == 0) {
+    //     // console.log(selectapartment, "LLL"); 
+    // } else {
+    //     if (selectapartment.value == 'Senior Housing') {
+    //         // apartmentstring = 'senior';
+    //         setapartmentstring('senior');
+    //     }
+    //     else if (selectapartment.value == 'Section 8') {
+    //         // apartmentstring = 'section';
+    //         setapartmentstring('section');
+    //     }
+    //     else {
+    //         setapartmentstring('');
+    //         // apartmentstring = '';
+    //     }
+    //     // console.log(selectapartment, "LLL");
+    // }
+
+
+
+
 
     const [selectBeds, setselectBeds] = useState([]);
 
@@ -380,62 +497,74 @@ const PropertySearch = () => {
 
 
 
-    let bathstring = "";
-    let bedstring = "";
-    let apartmentstring = "";
+    // let bathstring = "";
+    const [bathstring, setbathstring] = useState('');
+    // let bedstring = "";
+
+    const [bedstring, setbedstring] = useState('');
+
+
+    // let apartmentstring = "";
 
 
 
     useEffect(() => {
+        let tempbathstring = '';
         for (let i = 0; i < selectBaths.length; i++) {
             if (i < selectBaths.length - 1) {
-
-                bathstring += '\'' + parseFloat(selectBaths[i].label) + '\',';
+                tempbathstring += '\'' + parseFloat(selectBaths[i].label) + '\',';
             } else {
-
-                bathstring += '\'' + parseFloat(selectBaths[i].label) + '\'';
+                tempbathstring += '\'' + parseFloat(selectBaths[i].label) + '\'';
             }
         }
+
+        setbathstring(tempbathstring);
     }, [selectBaths])
 
 
 
     useEffect(() => {
+        let tempbedstring = '';
+
         for (let i = 0; i < selectBeds.length; i++) {
             if (selectBeds[i].label == 'Studio' || selectBeds[i].label == 'Others') {
-                bedstring += '\'' + selectBeds[i].label + '\',';
+                tempbedstring += '\'' + selectBeds[i].label + '\',';
             } else {
-                if (i < selectBeds.length - 1) {
-                    bedstring += '\'' + parseFloat(selectBeds[i].label) + '\',';
-                } else {
-
-                    bedstring += '\'' + parseFloat(selectBeds[i].label) + '\'';
-                }
+                // if (i < selectBeds.length - 1) {
+                //     setbedstring(bedstring + parseFloat(selectBeds[i].label) + ',')
+                // } else {
+                tempbedstring += parseFloat(selectBeds[i].label) + ',';
+                // }
             }
         }
+
+        setbedstring(tempbedstring);
+
+        // console.log(bedstring, "JAADUU4");
     }, [selectBeds]);
 
+
+
+
     useEffect(() => {
-
-        // console.log(bedstring);
-    }, [selectBeds])
-
+        console.log(bathstring, "JAADU");
+    }, [bathstring])
 
 
 
 
-    if (selectapartment.length == 0) {
+    // useEffect(() => {
 
-    } else {
-        if (selectapartment.value == 'Senior Housing') {
-            apartmentstring = 'senior';
-        } if (selectapartment.value == 'Section 8 Housing') {
-            apartmentstring = 'section';
-        }
-        if (selectapartment.value == 'Rental Deals') {
-            apartmentstring = '';
-        }
-    }
+    //     // console.log(bedstring, 'bedstring here');
+    //     // console.log(bathstring, "Bath here");
+    //     // console.log(apartmentstring, "apt str here");
+    // }, [selectBeds, selectBaths, selectapartment])
+
+
+
+
+
+
 
     let removelastcomma = (str) => {
         let us;
@@ -649,7 +778,7 @@ const PropertySearch = () => {
 
     let applyfilters = () => {
         // `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?city=${city}/${statename.toUpperCase()}&page=${currentpage}&feature=senior`
-        searchApiUrl = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?city=${city}&state=${statename.toUpperCase()}&page=${currentpage}&minamtval=${min_price}&maxamtval=${max_price}`
+        // searchApiUrl = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?city=${city}&state=${statename.toUpperCase()}&page=${currentpage}&minamtval=${min_price}&maxamtval=${max_price}`
         // console.log(searchApiUrl);
         setmin_price(minprice);
         setmax_price(maxprice);
@@ -824,19 +953,19 @@ const PropertySearch = () => {
                         settail(24);
                         // console.log("333");
                         settypeofdata("CITY");
-                        dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, true));
+                        dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, true, apartmentstring, min_price, max_price, bedstring, bathstring));
                     } else {
                         setsearchresultdata();
                         sethead(0);
                         settail(24);
                         // console.log("444");
                         settypeofdata("NON CITY");
-                        dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, false));
+                        dispatch(getPropListAccordingToMap(minlat, maxlat, minlng, maxlng, false, apartmentstring, min_price, max_price, bedstring, bathstring));
                     }
                 }
             }
         }
-    }, [areNonQuestionParametersPresent, areQuestionParametersPresent, mapchange, arequestionparameterschanegd])
+    }, [areNonQuestionParametersPresent, areQuestionParametersPresent, mapchange, arequestionparameterschanegd, bedstring, bathstring, min_price, max_price, apartmentstring])
 
 
 
@@ -1077,93 +1206,93 @@ const PropertySearch = () => {
 
             <section className="listingPage secPad24 propertySearchPage premium">
                 <div className="container2">
-                    <div className="row">          
+                    <div className="row">
 
-                                               
+
 
                         {/* <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">    */}
-                            <div
-                                className="listting-search-left">
+                        <div
+                            className="listting-search-left">
 
 
-                                {
-                                    (searchresultdata == null || searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0) ?
-                                        <Loader />
-                                        :
+                            {
+                                (searchresultdata == null || searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0) ?
+                                    <Loader />
+                                    :
 
-                                        (
-                                            // typeofdata == "CITY" 
-                                            typeOfApi == THIRDAPI
-                                                ?
-                                                <>
-                                                    <CityWiseList searchresultdata={searchresultdata} />
-                                                </>
-                                                :
-                                                <>
-                                                    <div className="listingSection map-filter-section">
-                                                        <div className="cst adjustment">
-                                                            <div className="itemWebsite">
-                                                                <nav className="navbar resNavbarBread" aria-label="breadcrumb">
-                                                                    <ol className="breadcrumb font-weight500 mb-0">
-                                                                        <li className="breadcrumb-item fontSize14"><a href="/" className=' purpleText' > Home</a></li>
-                                                                        <li className="breadcrumb-item fontSize14 purpleText"><a href="/" className=' purpleText' >{feature == 'senior' ? 'Senior Housing' : (feature == 'section' ? 'Section 8 Housing' : 'Rentals')}</a></li>
-                                                                        <li className="breadcrumb-item fontSize14 purpleText"><a href={`/propertySearch//${statename}`} className={city == undefined || city == '' ? 'activeimp' : 'purpleText'} >{statename.toUpperCase()}</a></li>
-                                                                        {city == undefined || city == '' ? null : <li className="breadcrumb-item fontSize14 active">{capitalise(city)}</li>}
-                                                                    </ol>
-                                                                </nav>
+                                    (
+                                        // typeofdata == "CITY" 
+                                        typeOfApi == THIRDAPI
+                                            ?
+                                            <>
+                                                <CityWiseList searchresultdata={searchresultdata} />
+                                            </>
+                                            :
+                                            <>
+                                                <div className="listingSection map-filter-section">
+                                                    <div className="cst adjustment">
+                                                        <div className="itemWebsite">
+                                                            <nav className="navbar resNavbarBread" aria-label="breadcrumb">
+                                                                <ol className="breadcrumb font-weight500 mb-0">
+                                                                    <li className="breadcrumb-item fontSize14"><a href="/" className=' purpleText' > Home</a></li>
+                                                                    <li className="breadcrumb-item fontSize14 purpleText"><a href="/" className=' purpleText' >{feature == 'senior' ? 'Senior Housing' : (feature == 'section' ? 'Section 8 Housing' : 'Rentals')}</a></li>
+                                                                    <li className="breadcrumb-item fontSize14 purpleText"><a href={`/propertySearch//${statename}`} className={city == undefined || city == '' ? 'activeimp' : 'purpleText'} >{statename.toUpperCase()}</a></li>
+                                                                    {city == undefined || city == '' ? null : <li className="breadcrumb-item fontSize14 active">{capitalise(city)}</li>}
+                                                                </ol>
+                                                            </nav>
+                                                        </div>
+                                                        <h1 className="font-weight400 mb-0 fontSize18">Apartments for rent in or near {city == undefined || city == '' ? null : `${capitalise(city)},`} {statename.toUpperCase()}</h1>
+                                                        <div className="tagList d-flex align-items-center">
+
+
+                                                            <div className="itemWebsite w-167 mr-1 apat">
+                                                                <MySelect
+                                                                    placeholder={'Apartment Type'}
+                                                                    options={apt_type}
+                                                                    // !isMulti
+                                                                    closeMenuOnSelect={false}
+                                                                    hideSelectedOptions={false}
+                                                                    components={{ Option, animatedComponents }}
+                                                                    onChange={selectchange}
+                                                                    allowSelectAll={false}
+                                                                    value={selectapartment}
+                                                                />
                                                             </div>
-                                                            <h1 className="font-weight400 mb-0 fontSize18">Apartments for rent in or near {city == undefined || city == '' ? null : `${capitalise(city)},`} {statename.toUpperCase()}</h1>
-                                                            <div className="tagList d-flex align-items-center">
 
+                                                            <div className="itemWebsite w-130 mr-1 bedd">
+                                                                <MySelect
+                                                                    placeholder={'Beds'}
+                                                                    options={numberofbeds}
+                                                                    isMulti
+                                                                    closeMenuOnSelect={false}
+                                                                    hideSelectedOptions={false}
+                                                                    components={{ Option, MultiValue, animatedComponents }}
+                                                                    onChange={selectedBeds}
+                                                                    allowSelectAll={false}
+                                                                    value={selectBeds}
+                                                                />
+                                                            </div>
 
-                                                                <div className="itemWebsite w-167 mr-1 apat">
-                                                                    <MySelect
-                                                                        placeholder={'Apartment Type'}
-                                                                        options={apt_type}
-                                                                        // !isMulti
-                                                                        closeMenuOnSelect={false}
-                                                                        hideSelectedOptions={false}
-                                                                        components={{ Option, MultiValue, animatedComponents }}
-                                                                        onChange={selectchange}
-                                                                        allowSelectAll={false}
-                                                                        value={selectapartment}
-                                                                    />
-                                                                </div>
+                                                            <div className="itemWebsite w-130 mr-1 bbaaths">
+                                                                <MySelect
+                                                                    placeholder={'Baths'}
+                                                                    options={numberofbaths}
+                                                                    isMulti
+                                                                    closeMenuOnSelect={false}
+                                                                    hideSelectedOptions={false}
+                                                                    components={{ Option, MultiValue, animatedComponents }}
+                                                                    onChange={selectedBaths}
+                                                                    allowSelectAll={false}
+                                                                    value={selectBaths}
+                                                                />
+                                                            </div>
 
-                                                                <div className="itemWebsite w-130 mr-1 bedd">
-                                                                    <MySelect
-                                                                        placeholder={'Beds'}
-                                                                        options={numberofbeds}
-                                                                        isMulti
-                                                                        closeMenuOnSelect={false}
-                                                                        hideSelectedOptions={false}
-                                                                        components={{ Option, MultiValue, animatedComponents }}
-                                                                        onChange={selectedBeds}
-                                                                        allowSelectAll={false}
-                                                                        value={selectBeds}
-                                                                    />
-                                                                </div>
-
-                                                                <div className="itemWebsite w-130 mr-1 bbaaths">
-                                                                    <MySelect
-                                                                        placeholder={'Baths'}
-                                                                        options={numberofbaths}
-                                                                        isMulti
-                                                                        closeMenuOnSelect={false}
-                                                                        hideSelectedOptions={false}
-                                                                        components={{ Option, MultiValue, animatedComponents }}
-                                                                        onChange={selectedBaths}
-                                                                        allowSelectAll={false}
-                                                                        value={selectBaths}
-                                                                    />
-                                                                </div>
-
-                                                                <div className="dropdown">
-                                                                    <ul className="noMarginPad listStyleNone clearfix">
-                                                                        <li className="secondaryColor itemTag " onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
-                                                                    </ul>
-                                                                </div>
-                                                                {/* if the filters are active below code 
+                                                            <div className="dropdown">
+                                                                <ul className="noMarginPad listStyleNone clearfix">
+                                                                    <li className="secondaryColor itemTag " onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
+                                                                </ul>
+                                                            </div>
+                                                            {/* if the filters are active below code 
                                                 <div className="dropdown">
                                                     <ul className="noMarginPad listStyleNone clearfix">
                                                         <li className="secondaryColor itemTag active" onClick={toggleModalFilter}><span className="dot" ></span>Filters</li>
@@ -1171,214 +1300,214 @@ const PropertySearch = () => {
                                                 </div> */}
 
 
-                                                                <div className="ml-auto itemWebsite">
-                                                                    <h4 className="numProperty colorBlue fontSize16 font-weight700 mb-0">
-                                                                        {searchresultdata == null || searchresultdata.length == 0 ? 0 : totalcount} Properties</h4>
-                                                                </div>
+                                                            <div className="ml-auto itemWebsite">
+                                                                <h4 className="numProperty colorBlue fontSize16 font-weight700 mb-0">
+                                                                    {searchresultdata == null || searchresultdata.length == 0 ? 0 : totalcount} Properties</h4>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="listingSection adjustment1">
+                                                </div>
+                                                <div className="listingSection adjustment1">
 
 
-                                                        <div className="propertyList propertyListScroll boxscroll4">
+                                                    <div className="propertyList propertyListScroll boxscroll4">
 
-                                                            <div className="wrapperScroll ">
-                                                                <ul className="noMarginPad listStyleNone">
+                                                        <div className="wrapperScroll ">
+                                                            <ul className="noMarginPad listStyleNone">
 
-                                                                    {
+                                                                {
 
-                                                                        searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0 || searchresultdata == null || typeOfApi == FIRSTAPI
+                                                                    searchresultdata == undefined || searchresultdata == '' || searchresultdata.length == 0 || searchresultdata == null || typeOfApi == FIRSTAPI
+                                                                        ?
+                                                                        <>
+                                                                            <Loader />
+                                                                        </>
+                                                                        :
+                                                                        searchresultdata == ERROR
                                                                             ?
-                                                                            <>
-                                                                                <Loader />
-                                                                            </>
+                                                                            window.location.replace("/error404")
                                                                             :
-                                                                            searchresultdata == ERROR
-                                                                                ?
-                                                                                window.location.replace("/error404")
-                                                                                :
-                                                                                (
-                                                                                    searchresultdata.slice(head, tail).map((post, index) => (
-                                                                                        <>
-                                                                                            {index == 4 ?
+                                                                            (
+                                                                                searchresultdata.slice(head, tail).map((post, index) => (
+                                                                                    <>
+                                                                                        {index == 4 ?
+                                                                                            <li className="listingBlock2 responsive-15">
+                                                                                                <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' />
+
+                                                                                            </li>
+                                                                                            :
+                                                                                            null
+                                                                                        }
+                                                                                        {
+                                                                                            index == 9 ?
                                                                                                 <li className="listingBlock2 responsive-15">
-                                                                                                    <GoogleADS placeholderId='618' width='680px' height='220px' slotno='2539422872' />
+                                                                                                    <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' />
 
                                                                                                 </li>
                                                                                                 :
                                                                                                 null
-                                                                                            }
-                                                                                            {
-                                                                                                index == 9 ?
-                                                                                                    <li className="listingBlock2 responsive-15">
-                                                                                                        <GoogleADS placeholderId='619' width='680px' height='220px' slotno='6665520080' />
+                                                                                        }
+                                                                                        <li className="listingBlock2 responsive-15"
+                                                                                            onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
+                                                                                            onMouseLeave={() => clearLatlng()}
+                                                                                        >
+                                                                                            <PropertySearchItem post={post} />
+                                                                                        </li>
 
-                                                                                                    </li>
-                                                                                                    :
-                                                                                                    null
-                                                                                            }
-                                                                                            <li className="listingBlock2 responsive-15"
-                                                                                                onMouseEnter={() => changeLatLng(post.property.lat, post.property.lng)}
-                                                                                                onMouseLeave={() => clearLatlng()}
-                                                                                            >
-                                                                                                <PropertySearchItem post={post} />
-                                                                                            </li>
-
-                                                                                        </>
-                                                                                    )
-                                                                                    )
+                                                                                    </>
                                                                                 )
+                                                                                )
+                                                                            )
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {/* pagination */}
+                                                    {
+                                                        lastpage == undefined || lastpage == 0 || lastpage == '' || totalcount < 26 ? null :
+                                                            <div className="pagination">
+                                                                <ul className="noMarginPad listStyleNone">
+
+                                                                    {/* left arrow  */}
+                                                                    {
+                                                                        currentpage == 1
+                                                                            ?
+                                                                            null
+                                                                            :
+                                                                            <li className="paginationNum arrowRight" onClick={() => {
+                                                                                if (currentpage <= 4) {
+                                                                                    currentpagechange(currentpage - 1);
+                                                                                    // setsearchresultdata();
+                                                                                }
+                                                                                else {
+                                                                                    setfourpage(currentpage - 1);
+                                                                                    currentpagechange(currentpage - 1);
+                                                                                    // setsearchresultdata();
+                                                                                }
+                                                                            }}>
+                                                                                <img src={require('../../assets/img/checvronpl.png').default} />
+                                                                            </li>
+                                                                    }
+
+
+
+                                                                    {/* before dots section  */}
+                                                                    {
+
+                                                                        <>
+                                                                            {
+                                                                                lastpage < 8
+                                                                                    ?
+                                                                                    (
+                                                                                        tagarray.slice(0, lastpage).map(
+                                                                                            (data) => {
+                                                                                                return (
+                                                                                                    data
+                                                                                                );
+                                                                                            }
+                                                                                        )
+                                                                                    )
+                                                                                    :
+                                                                                    <>
+                                                                                        <li className={`${currentpage == fourpage - 3 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(fourpage - 3);
+                                                                                        }}>{fourpage - 3}</li>
+
+                                                                                        <li className={`${currentpage == (fourpage - 2) ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(fourpage - 2);
+                                                                                        }}>{fourpage - 2}</li>
+
+                                                                                        <li className={`${currentpage == fourpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(fourpage - 1);
+                                                                                        }}>{fourpage - 1}</li>
+
+                                                                                        <li className={`${currentpage == fourpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(fourpage);
+                                                                                        }}>{fourpage}</li>
+                                                                                    </>
+                                                                            }
+
+
+
+
+
+                                                                            {/* after dots section  */}
+                                                                            {
+                                                                                lastpage > 7
+                                                                                    ?
+                                                                                    <>
+                                                                                        <li className="dotsBlock">...</li>
+
+                                                                                        <li className={`${currentpage == lastpage - 2 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(lastpage - 2);
+                                                                                        }}>{lastpage - 2}</li>
+
+                                                                                        <li className={`${currentpage == lastpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(lastpage - 1);
+                                                                                        }}>{lastpage - 1}</li>
+
+                                                                                        <li className={`${currentpage == lastpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
+                                                                                            currentpagechange(lastpage);
+                                                                                        }}>{lastpage}</li>
+                                                                                    </>
+                                                                                    :
+                                                                                    null
+                                                                            }
+
+
+                                                                        </>
+                                                                    }
+
+
+                                                                    {/* right aRROW  */}
+                                                                    {
+                                                                        currentpage == lastpage
+                                                                            ?
+                                                                            null
+                                                                            :
+                                                                            <li className="paginationNum arrowRight" onClick={() => {
+                                                                                if (currentpage >= 4) {
+                                                                                    setfourpage(currentpage + 1);
+                                                                                    currentpagechange(currentpage + 1);
+                                                                                }
+                                                                                else {
+                                                                                    currentpagechange(currentpage + 1);
+                                                                                }
+                                                                            }}>
+
+                                                                                <img src={require('../../assets/img/checvronpr.png').default} />
+                                                                            </li>
                                                                     }
                                                                 </ul>
-                                                            </div>
-                                                        </div>
-
-
-                                                        {/* pagination */}
-                                                        {
-                                                            lastpage == undefined || lastpage == 0 || lastpage == '' || totalcount < 26 ? null :
-                                                                <div className="pagination">
-                                                                    <ul className="noMarginPad listStyleNone">
-
-                                                                        {/* left arrow  */}
-                                                                        {
-                                                                            currentpage == 1
-                                                                                ?
-                                                                                null
-                                                                                :
-                                                                                <li className="paginationNum arrowRight" onClick={() => {
-                                                                                    if (currentpage <= 4) {
-                                                                                        currentpagechange(currentpage - 1);
-                                                                                        // setsearchresultdata();
-                                                                                    }
-                                                                                    else {
-                                                                                        setfourpage(currentpage - 1);
-                                                                                        currentpagechange(currentpage - 1);
-                                                                                        // setsearchresultdata();
-                                                                                    }
-                                                                                }}>
-                                                                                    <img src={require('../../assets/img/checvronpl.png').default} />
-                                                                                </li>
-                                                                        }
-
-
-
-                                                                        {/* before dots section  */}
-                                                                        {
-
+                                                                <p className="mb-0 fontSize14 font-weight400 text-center mt-1 secondaryColor">Showing&nbsp;
+                                                                    {
+                                                                        lastpage == 1 ?
+                                                                            <>{1}-{totalcount} of&nbsp;{totalcount}</>
+                                                                            :
                                                                             <>
                                                                                 {
-                                                                                    lastpage < 8
-                                                                                        ?
-                                                                                        (
-                                                                                            tagarray.slice(0, lastpage).map(
-                                                                                                (data) => {
-                                                                                                    return (
-                                                                                                        data
-                                                                                                    );
-                                                                                                }
-                                                                                            )
-                                                                                        )
+                                                                                    currentpage == lastpage ?
+                                                                                        <>{currentpage * 25 - 24}-{totalcount} of&nbsp;{totalcount}</>
                                                                                         :
-                                                                                        <>
-                                                                                            <li className={`${currentpage == fourpage - 3 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(fourpage - 3);
-                                                                                            }}>{fourpage - 3}</li>
-
-                                                                                            <li className={`${currentpage == (fourpage - 2) ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(fourpage - 2);
-                                                                                            }}>{fourpage - 2}</li>
-
-                                                                                            <li className={`${currentpage == fourpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(fourpage - 1);
-                                                                                            }}>{fourpage - 1}</li>
-
-                                                                                            <li className={`${currentpage == fourpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(fourpage);
-                                                                                            }}>{fourpage}</li>
-                                                                                        </>
+                                                                                        <>{currentpage * 25 - 24}-{currentpage * 25} of&nbsp;{totalcount}</>
                                                                                 }
-
-
-
-
-
-                                                                                {/* after dots section  */}
-                                                                                {
-                                                                                    lastpage > 7
-                                                                                        ?
-                                                                                        <>
-                                                                                            <li className="dotsBlock">...</li>
-
-                                                                                            <li className={`${currentpage == lastpage - 2 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(lastpage - 2);
-                                                                                            }}>{lastpage - 2}</li>
-
-                                                                                            <li className={`${currentpage == lastpage - 1 ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(lastpage - 1);
-                                                                                            }}>{lastpage - 1}</li>
-
-                                                                                            <li className={`${currentpage == lastpage ? "active paginationNum" : "paginationNum"}`} onClick={() => {
-                                                                                                currentpagechange(lastpage);
-                                                                                            }}>{lastpage}</li>
-                                                                                        </>
-                                                                                        :
-                                                                                        null
-                                                                                }
-
-
                                                                             </>
-                                                                        }
 
-
-                                                                        {/* right aRROW  */}
-                                                                        {
-                                                                            currentpage == lastpage
-                                                                                ?
-                                                                                null
-                                                                                :
-                                                                                <li className="paginationNum arrowRight" onClick={() => {
-                                                                                    if (currentpage >= 4) {
-                                                                                        setfourpage(currentpage + 1);
-                                                                                        currentpagechange(currentpage + 1);
-                                                                                    }
-                                                                                    else {
-                                                                                        currentpagechange(currentpage + 1);
-                                                                                    }
-                                                                                }}>
-
-                                                                                    <img src={require('../../assets/img/checvronpr.png').default} />
-                                                                                </li>
-                                                                        }
-                                                                    </ul>
-                                                                    <p className="mb-0 fontSize14 font-weight400 text-center mt-1 secondaryColor">Showing&nbsp;
-                                                                        {
-                                                                            lastpage == 1 ?
-                                                                                <>{1}-{totalcount} of&nbsp;{totalcount}</>
-                                                                                :
-                                                                                <>
-                                                                                    {
-                                                                                        currentpage == lastpage ?
-                                                                                            <>{currentpage * 25 - 24}-{totalcount} of&nbsp;{totalcount}</>
-                                                                                            :
-                                                                                            <>{currentpage * 25 - 24}-{currentpage * 25} of&nbsp;{totalcount}</>
-                                                                                    }
-                                                                                </>
-
-                                                                        }
-                                                                        &nbsp;Results</p>
-                                                                </div>
-                                                        }
-                                                    </div>
-                                                </>
-                                        )
-                                }
-                                <div className="itemWebsite">
-                                    <Footer />
-                                </div>
-                                
+                                                                    }
+                                                                    &nbsp;Results</p>
+                                                            </div>
+                                                    }
+                                                </div>
+                                            </>
+                                    )
+                            }
+                            <div className="itemWebsite">
+                                <Footer />
                             </div>
+
+                        </div>
                         {/* </div> */}
 
                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0 pl-0">
@@ -1424,7 +1553,7 @@ const PropertySearch = () => {
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div className="itemMobile secondFooter">
                                 <Footer />
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1451,9 +1580,20 @@ const PropertySearch = () => {
                                     // console.log(min, max);
                                     // setmin_price(min);
                                     // setmax_price(max);
-                                    minprice = min;
-                                    maxprice = max;
+                                    // minprice = min;
+                                    // maxprice = max;
+
+                                    setminprice(min);
+                                    setmaxprice(max);
+
                                 }}
+
+
+                                minpr={minprice}
+                                maxpr={maxprice}
+
+
+
                             />
                         </div>
                         <div className="brdrLineModal marLftRgt"></div>
@@ -1712,8 +1852,7 @@ const PropertySearch = () => {
                             </div>
                             <div className="w-50">
                                 <button type="button" onClick={applyfilters}
-                                    className="btn w-100 modalSubmitBtn fontSize16 font-weight500 colorWhite"  >Apply
-                                    Filters</button>
+                                    className="btn w-100 modalSubmitBtn fontSize16 font-weight500 colorWhite">Apply Filters</button>
                             </div>
                         </div>
                     </div>
@@ -1721,7 +1860,7 @@ const PropertySearch = () => {
 
 
 
-                
+
             </section>
 
 

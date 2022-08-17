@@ -146,7 +146,7 @@ const Maptile = () => {
         (state) => state.mapZoom
     );
 
-    console.log(mapZoom, "MMMMMM");
+    // console.log(mapZoom, "MMMMMM");
 
     // get map Bounds
     function updateMap() {

@@ -2912,10 +2912,10 @@ const PropertyDetailPage = ({ post }) => {
                                         data-ad-slot={'3956446321'}></ins> */}
 
                                     {/* old rhd code  */}
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style="display:inline-block;width:728px;height:90px"
                                         data-ad-client="ca-pub-2836217214879103"
-                                        data-ad-slot="6372819974"></ins>
+                                        data-ad-slot="6372819974"></ins> */}
                                 </div>
 
 
@@ -3401,10 +3401,10 @@ const PropertyDetailPage = ({ post }) => {
 
 
                                     {/* old rhd code  */}
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style="display:inline-block;width:300px;height:600px"
                                         data-ad-client="ca-pub-2836217214879103"
-                                        data-ad-slot="2072690303"></ins>
+                                        data-ad-slot="2072690303"></ins> */}
 
                                     {/* <GoogleADS placeholderId='632' width='300px' height='250px' slotno='6857091773' /> */}
                                 </div>
@@ -3439,10 +3439,10 @@ const PropertyDetailPage = ({ post }) => {
 
 
                                     {/* old rhd code  */}
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style="display:inline-block;width:300px;height:600px"
                                         data-ad-client="ca-pub-2836217214879103"
-                                        data-ad-slot="2072690303"></ins>
+                                        data-ad-slot="2072690303"></ins> */}
 
                                     {/* <GoogleADS placeholderId='149' width='300px' height='600px' slotno='1505526895' /> */}
                                 </div>
@@ -3475,10 +3475,10 @@ const PropertyDetailPage = ({ post }) => {
 
 
                             {/* old rhd code  */}
-                            <ins class="adsbygoogle"
+                            {/* <ins class="adsbygoogle"
                                 style="display:inline-block;width:728px;height:90px"
                                 data-ad-client="ca-pub-2836217214879103"
-                                data-ad-slot="6372819974"></ins>
+                                data-ad-slot="6372819974"></ins> */}
 
 
                             {/* <GoogleADS placeholderId='145' width='970px' height='250px' slotno='7791749557' /> */}
