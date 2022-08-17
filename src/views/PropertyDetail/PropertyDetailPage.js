@@ -727,11 +727,11 @@ const PropertyDetailPage = ({ post }) => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <script type="text/javascript">
                     {adsHeadScript}
                 </script>
-            </Helmet>
+            </Helmet> */}
 
 
             <section className="detailPage secPad24 propertydetail-page agencyMarginTop">
@@ -2903,13 +2903,19 @@ const PropertyDetailPage = ({ post }) => {
 
                                 <div>
                                     {/* <GoogleADS placeholderId='618' width='728px' height='90px' slotno='3956446321' /> */}
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style={{
                                             display: "inline-block"
                                             // , width: `100%`, height: `100%`
                                         }}
                                         data-ad-client={GOOGLEADSCLIENTID}
-                                        data-ad-slot={'3956446321'}></ins>
+                                        data-ad-slot={'3956446321'}></ins> */}
+
+                                    {/* old rhd code  */}
+                                    {/* <ins class="adsbygoogle"
+                                        style="display:inline-block;width:728px;height:90px"
+                                        data-ad-client="ca-pub-2836217214879103"
+                                        data-ad-slot="6372819974"></ins> */}
                                 </div>
 
 
@@ -3385,13 +3391,21 @@ const PropertyDetailPage = ({ post }) => {
                                 </div>
 
                                 <div style={{ "margin-top": '24px' }}>
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style={{
                                             display: "inline-block"
                                             // , width: `100%`, height: `100%`
                                         }}
                                         data-ad-client={GOOGLEADSCLIENTID}
-                                        data-ad-slot={'6857091773'}></ins>
+                                        data-ad-slot={'6857091773'}></ins> */}
+
+
+                                    {/* old rhd code  */}
+                                    {/* <ins class="adsbygoogle"
+                                        style="display:inline-block;width:300px;height:600px"
+                                        data-ad-client="ca-pub-2836217214879103"
+                                        data-ad-slot="2072690303"></ins> */}
+
                                     {/* <GoogleADS placeholderId='632' width='300px' height='250px' slotno='6857091773' /> */}
                                 </div>
 
@@ -3415,13 +3429,21 @@ const PropertyDetailPage = ({ post }) => {
                                 <AffordabilityCal />
                                 <CityCountyQuickFacts propincome={propincome} />
                                 <div style={{ "margin-top": '24px' }}>
-                                    <ins class="adsbygoogle"
+                                    {/* <ins class="adsbygoogle"
                                         style={{
                                             display: "inline-block"
                                             // , width: `100%`, height: `100%`
                                         }}
                                         data-ad-client={GOOGLEADSCLIENTID}
-                                        data-ad-slot={'1505526895'}></ins>
+                                        data-ad-slot={'1505526895'}></ins> */}
+
+
+                                    {/* old rhd code  */}
+                                    {/* <ins class="adsbygoogle"
+                                        style="display:inline-block;width:300px;height:600px"
+                                        data-ad-client="ca-pub-2836217214879103"
+                                        data-ad-slot="2072690303"></ins> */}
+
                                     {/* <GoogleADS placeholderId='149' width='300px' height='600px' slotno='1505526895' /> */}
                                 </div>
                             </div>
@@ -3443,13 +3465,22 @@ const PropertyDetailPage = ({ post }) => {
                         </div>
 
                         <div>
-                            <ins class="adsbygoogle"
+                            {/* <ins class="adsbygoogle"
                                 style={{
                                     display: "inline-block"
                                     // , width: `100%`, height: `100%`
                                 }}
                                 data-ad-client={GOOGLEADSCLIENTID}
-                                data-ad-slot={'7791749557'}></ins>
+                                data-ad-slot={'7791749557'}></ins> */}
+
+
+                            {/* old rhd code  */}
+                            {/* <ins class="adsbygoogle"
+                                style="display:inline-block;width:728px;height:90px"
+                                data-ad-client="ca-pub-2836217214879103"
+                                data-ad-slot="6372819974"></ins> */}
+
+
                             {/* <GoogleADS placeholderId='145' width='970px' height='250px' slotno='7791749557' /> */}
                         </div>
 

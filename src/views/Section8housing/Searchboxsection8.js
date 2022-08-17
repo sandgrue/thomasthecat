@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useHistory } from "react-router";
 
 import JSONDATA from '../../containers/JSONS/MOCK.json'
-import { Link } from 'react-router-dom';
+import { isItNull } from '../../containers/functions';
 
 const Searchboxsection8 = ({ latlngdata }) => {
 
@@ -142,6 +142,24 @@ const Searchboxsection8 = ({ latlngdata }) => {
         }
     }
 
+
+
+
+    let pushtosearchresult = (city, statenames) => {
+
+        if (isItNull(city) || isItNull(statenames)) {
+
+        }
+        else {
+
+
+            localStorage.setItem("featureName", "Section 8");
+            window.location.href = `/propertySearch/${city}/${statenames}`;
+            // history.push(`/propertySearch/${city}/${statenames}`)
+        }
+
+    }
+
     return (
         <div>
             <section className="bannerSection bannerSection3 itemWebsite1">
@@ -217,10 +235,10 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                         dropdowndata == 'No Record Found' ?
                                                             <>
                                                                 <p>
-                                                                    <Link className='secondaryColor w-100 d-block' to={`/propertySearch/${city == undefined ? null : city}/${statenames == undefined ? null : statenames}/section`}>
+                                                                    <span className='secondaryColor w-100 d-block' onClick={() => pushtosearchresult(city, statenames)}>
                                                                         <svg className='mr-2' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.208 16.712a.75.75 0 01-.469-1.425 5.564 5.564 0 003.548-3.548.75.75 0 011.425.469 7.064 7.064 0 01-4.504 4.504zM4.712 8.26a.75.75 0 01-1.425-.468 7.064 7.064 0 014.505-4.505.75.75 0 01.469 1.425A5.564 5.564 0 004.712 8.26zm11.522.479a.75.75 0 00.478-.947 7.065 7.065 0 00-4.504-4.505.75.75 0 00-.469 1.425 5.564 5.564 0 013.548 3.548.75.75 0 00.947.479zm-7.973 6.548a.75.75 0 01-.469 1.425 7.065 7.065 0 01-4.505-4.504.75.75 0 011.425-.469 5.564 5.564 0 003.549 3.548z" fill="#726F6C" /><path d="M10 7a3 3 0 110 6 3 3 0 010-6z" fill="#3db675" /></svg>
                                                                         Use Your Current Location
-                                                                    </Link>
+                                                                    </span>
                                                                 </p>
                                                                 <p className='secondaryColor w-100 d-block'>
                                                                     <span className='secondaryColor w-100 d-block'>
@@ -232,10 +250,10 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                             <>{
                                                                 <>
                                                                     <p>
-                                                                        <Link className='w-100 d-block' to={`/propertySearch/${city == undefined ? null : city}/${statenames == undefined ? null : statenames}/section`}>
+                                                                        <span className='w-100 d-block' onClick={() => pushtosearchresult(city, statenames)} >
                                                                             <svg className='mr-2' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.208 16.712a.75.75 0 01-.469-1.425 5.564 5.564 0 003.548-3.548.75.75 0 011.425.469 7.064 7.064 0 01-4.504 4.504zM4.712 8.26a.75.75 0 01-1.425-.468 7.064 7.064 0 014.505-4.505.75.75 0 01.469 1.425A5.564 5.564 0 004.712 8.26zm11.522.479a.75.75 0 00.478-.947 7.065 7.065 0 00-4.504-4.505.75.75 0 00-.469 1.425 5.564 5.564 0 013.548 3.548.75.75 0 00.947.479zm-7.973 6.548a.75.75 0 01-.469 1.425 7.065 7.065 0 01-4.505-4.504.75.75 0 011.425-.469 5.564 5.564 0 003.549 3.548z" fill="#726F6C" /><path d="M10 7a3 3 0 110 6 3 3 0 010-6z" fill="#3db675" /></svg>
                                                                             Use Your Current Location
-                                                                        </Link>
+                                                                        </span>
                                                                     </p>
 
                                                                     {dropdowndata.map((val) => {
@@ -252,12 +270,12 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                                                     val.property_state == null || val.property_state == undefined ?
                                                                                         `${val.property_city}, ${val.property_state}`
                                                                                         :
-                                                                                        <Link className='secondaryColor w-100 d-block' to={`/propertySearch/${val.property_city}/${val.property_state}/section`}>
+                                                                                        <span className='secondaryColor w-100 d-block' onClick={() => pushtosearchresult(val.property_city, val.property_state)}>
                                                                                             {val.property_city.toLowerCase()
                                                                                                 .split(' ')
                                                                                                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                                                                                                 .join(' ')}, {val.property_state}
-                                                                                        </Link>
+                                                                                        </span>
                                                                                 }
 
                                                                             </p>
@@ -402,10 +420,10 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                         dropdowndata == 'No Record Found' ?
                                                             <>
                                                                 <p>
-                                                                    <Link className='secondaryColor w-100 d-flex align-items-center' to={`/propertySearch/${city == undefined ? null : city}/${statenames == undefined ? null : statenames}`}>
+                                                                    <span className='secondaryColor w-100 d-flex align-items-center' onClick={() => pushtosearchresult(city, statenames)}>
                                                                         <svg className='mr-2' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.208 16.712a.75.75 0 01-.469-1.425 5.564 5.564 0 003.548-3.548.75.75 0 011.425.469 7.064 7.064 0 01-4.504 4.504zM4.712 8.26a.75.75 0 01-1.425-.468 7.064 7.064 0 014.505-4.505.75.75 0 01.469 1.425A5.564 5.564 0 004.712 8.26zm11.522.479a.75.75 0 00.478-.947 7.065 7.065 0 00-4.504-4.505.75.75 0 00-.469 1.425 5.564 5.564 0 013.548 3.548.75.75 0 00.947.479zm-7.973 6.548a.75.75 0 01-.469 1.425 7.065 7.065 0 01-4.505-4.504.75.75 0 011.425-.469 5.564 5.564 0 003.549 3.548z" fill="#726F6C" /><path d="M10 7a3 3 0 110 6 3 3 0 010-6z" fill="#3db675" /></svg>
                                                                         Use Your Current Location
-                                                                    </Link>
+                                                                    </span>
                                                                 </p>
                                                                 <p className='secondaryColor w-100 d-block'>
                                                                     <span className='secondaryColor w-100 d-block'>
@@ -418,10 +436,10 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                                 {
                                                                     <>
                                                                         <p>
-                                                                            <Link className='secondaryColor w-100 d-flex align-items-center' to={`/propertySearch/${city == undefined ? null : city}/${statenames == undefined ? null : statenames}`}>
+                                                                            <span className='secondaryColor w-100 d-flex align-items-center' onClick={() => pushtosearchresult(city, statenames)}>
                                                                                 <svg className='mr-2' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.208 16.712a.75.75 0 01-.469-1.425 5.564 5.564 0 003.548-3.548.75.75 0 011.425.469 7.064 7.064 0 01-4.504 4.504zM4.712 8.26a.75.75 0 01-1.425-.468 7.064 7.064 0 014.505-4.505.75.75 0 01.469 1.425A5.564 5.564 0 004.712 8.26zm11.522.479a.75.75 0 00.478-.947 7.065 7.065 0 00-4.504-4.505.75.75 0 00-.469 1.425 5.564 5.564 0 013.548 3.548.75.75 0 00.947.479zm-7.973 6.548a.75.75 0 01-.469 1.425 7.065 7.065 0 01-4.505-4.504.75.75 0 011.425-.469 5.564 5.564 0 003.549 3.548z" fill="#726F6C" /><path d="M10 7a3 3 0 110 6 3 3 0 010-6z" fill="#3db675" /></svg>
                                                                                 Use Your Current Location
-                                                                            </Link>
+                                                                            </span>
                                                                         </p>
 
                                                                         {
@@ -440,12 +458,12 @@ const Searchboxsection8 = ({ latlngdata }) => {
                                                                                                 val.property_state == null || val.property_state == undefined ?
                                                                                                     `${val.property_city}, ${val.property_state}`
                                                                                                     :
-                                                                                                    <Link className='secondaryColor w-100 d-block' to={`/propertySearch/${val.property_city}/${val.property_state}`}>
+                                                                                                    <span className='secondaryColor w-100 d-block' onClick={() => pushtosearchresult(val.property_city, val.property_state)} >
                                                                                                         {val.property_city.toLowerCase()
                                                                                                             .split(' ')
                                                                                                             .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                                                                                                             .join(' ')}, {val.property_state}
-                                                                                                    </Link>
+                                                                                                    </span>
                                                                                             }
 
                                                                                         </p>

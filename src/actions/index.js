@@ -1,14 +1,22 @@
 import { FETCH_PROPS, FIRSTAPI, SECONDAPI, THIRDAPI, MAP_ZOOM } from '../constants/constants.js';
 import axios from 'axios';
+import { removelastcomma } from '../containers/functions.js';
 
 let cancelTokens;
 
-export const getPropListAccordingToMap = (minlat, maxlat, minlng, maxlng, isItCityVISE) => async (dispatch) => {
+export const getPropListAccordingToMap = (minlat, maxlat, minlng, maxlng, isItCityVISE, featureParameter, min_price, max_price, bedstring, bathstring) => async (dispatch) => {
     if (typeof (cancelTokens) != typeof (undefined)) {
         cancelTokens.cancel("Canceling the prev stacks");
     }
     cancelTokens = axios.CancelToken.source();
-    let zoomInURL = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?maxlat=${maxlat}&minlat=${minlat}&minlan=${minlng}&maxlan=${maxlng}`;
+
+    // console.log(featureParameter, min_price, max_price, bedstring, bathstring, "JAADU");
+
+
+    let zoomInURL = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?maxlat=${maxlat}&minlat=${minlat}&minlan=${minlng}&maxlan=${maxlng}&feature=${featureParameter}&minamtval=${min_price == undefined ? '' : min_price}&maxamtval=${max_price == undefined ? '' : max_price}&beds=${removelastcomma(bedstring)}&baths=${removelastcomma(bathstring)}`;
+
+
+    // let zoomInURL = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/property-search?maxlat=${maxlat}&minlat=${minlat}&minlan=${minlng}&maxlan=${maxlng}`;
     let zoomOutURL = `http://thomasthecat.rentalhousingdeals.com/apis/v1/api/v1/groupbycity?maxlat=${maxlat}&minlat=${minlat}&minlan=${minlng}&maxlan=${maxlng}`
     var zoomInConfig = {
         method: 'post',
